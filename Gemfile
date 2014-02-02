@@ -17,13 +17,61 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
+gem 'active_model_serializers'
+
+# dev grease
+gem 'simple_form'
+gem 'cruddy'
+
+# background jobs
+gem 'sidekiq'
+gem 'whenever', require: false
+
+gem 'premailer-rails'
+
+# sitemap generation
+gem 'big_sitemap'
+
+gem 'compass-rails'
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
+
+gem 'paperclip' # store images
+gem 'paperclip-meta', github: 'y8/paperclip-meta', ref: '321f437f36696d539db1a1853efc0e8e08539b44' # and their meta data
+gem 'aws-sdk' # and store them on s3
+
+gem 'will_paginate' # pagination
+gem 'will_paginate-bootstrap'
+
+# user auth
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+group :development, :test do
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'poltergeist'
+  gem 'fuubar'
+  gem 'launchy'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-
-gem 'sidekiq'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
