@@ -32,10 +32,10 @@ end
 
 # Use Capistrano for deployment
 group :development do
-  gem 'capistrano'
-  gem 'capistrano-rbenv', github: "capistrano/rbenv"
-  gem 'capistrano-rails'
-  gem 'capistrano-bundler'
+  gem 'capistrano-rails', '1.1.0'
+  gem 'capistrano', '>= 3.0.0'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler', '1.1.1'
   gem 'sepastian-capistrano3-unicorn', require: false
 end
 

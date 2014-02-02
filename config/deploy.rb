@@ -1,5 +1,5 @@
 set :application, 'creatorhuddle'
-set :repo_url, 'git@github.com:arehberg/creatorhuddle.git'
+set :repo_url, 'git@github.com:arehberg/creatorhuddle.com.git'
 set :user, 'deploy'
 set :deploy_to, '/home/deploy/apps/creatorhuddle'
 
