@@ -1,0 +1,11 @@
+.well {
+  padding: 30px;
+  background: $gray-lighter;
+  margin-bottom: 10px;
+  border-radius: 0;
+  border: 0;
+  border-left: 5px solid $brand-secondary;
+
+  @include box-shadow(none);
+
+}

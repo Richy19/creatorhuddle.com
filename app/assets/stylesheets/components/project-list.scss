@@ -1,0 +1,26 @@
+.project-list {
+  .page-header {
+    margin-bottom: 0;
+    border: 0;
+  }
+}
+
+.projects {
+  list-style: none;
+  padding: 0;
+
+  .project {
+    h4 {
+      margin: 0 0 10px;
+    }
+
+    p {
+      margin: 0 0 10px;
+      color: $gray-dark;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

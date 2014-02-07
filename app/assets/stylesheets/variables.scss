@@ -1,1 +1,123 @@
-$body-bg: #fff;
+$font-family-sans-serif: 'adelle-sans', 'helvetica', 'arial', sans-serif;
+$font-family-serif: "adelle", 'cambria', 'geogria', serif;
+
+$gray-lighter:           #F8F6EC; // #eee
+$gray-light:             shade($gray-lighter, 10%);
+$gray:                   shade($gray-lighter, 20%);
+$gray-dark:              shade($gray-lighter, 30%);
+$gray-darker:            shade($gray-lighter, 40%);
+
+$brand-primary: #333;
+$brand-secondary: #ffc200;
+$brand-danger: #dd3737;
+$brand-warning: #f0ad4e;
+$brand-info: #6d6d6d;
+$brand-success: #2bcb2f;
+
+
+// Scaffolding
+// -------------------------
+
+$body-bg:               #fff;
+$text-color:            shade($body-bg, 65%);
+
+// Components
+// -------------------------
+// Based on 14px font-size and 1.428 line-height (~20px to start)
+
+$padding-base-vertical:          6px;
+$padding-base-horizontal:        12px;
+
+$padding-large-vertical:         10px;
+$padding-large-horizontal:       16px;
+
+$padding-small-vertical:         5px;
+$padding-small-horizontal:       10px;
+
+$padding-xs-vertical:            1px;
+$padding-xs-horizontal:          5px;
+
+$line-height-large:              1.33;
+$line-height-small:              1.5;
+
+$border-radius-base:             4px;
+$border-radius-large:            6px;
+$border-radius-small:            3px;
+
+$component-active-color:         #fff;
+$component-active-bg:            $brand-primary;
+
+$caret-width-base:               4px;
+$caret-width-large:              5px;
+
+// Buttons
+// -------------------------
+
+$btn-font-weight:                normal;
+
+$btn-default-color:              #fff;
+$btn-default-bg:                 $brand-primary;
+$btn-default-border:             $btn-default-bg;
+
+$btn-primary-color:              #fff;
+$btn-primary-bg:                 $brand-primary;
+$btn-primary-border:             $btn-primary-bg;
+
+$btn-success-color:              #fff;
+$btn-success-bg:                 $brand-success;
+$btn-success-border:             $btn-success-bg;
+
+$btn-warning-color:              #fff;
+$btn-warning-bg:                 $brand-warning;
+$btn-warning-border:             $btn-warning-bg;
+
+$btn-danger-color:               #fff;
+$btn-danger-bg:                  $brand-danger;
+$btn-danger-border:              $btn-danger-bg;
+
+$btn-info-color:                 #fff;
+$btn-info-bg:                    $brand-info;
+$btn-info-border:                $btn-info-bg;
+
+$btn-link-disabled-color:        $gray-light;
+
+// Form states and alerts
+// -------------------------
+
+$state-success-text:             #fff;
+$state-success-bg:               $gray-darker;
+$state-success-border:           $state-success-bg;
+
+$state-info-text:                #fff;
+$state-info-bg:                  $gray-darker;
+$state-info-border:              $state-info-bg;
+
+$state-warning-text:             #fff;
+$state-warning-bg:               $brand-warning;
+$state-warning-border:           $state-warning-bg;
+
+$state-danger-text:              #fff;
+$state-danger-bg:                $brand-danger;
+$state-danger-border:            $state-danger-bg;
+
+// Alerts
+// -------------------------
+$alert-padding:               15px 0;
+$alert-border-radius:         0;
+$alert-link-font-weight:      bold;
+
+$alert-success-bg:            $state-success-bg;
+$alert-success-text:          $state-success-text;
+$alert-success-border:        $state-success-border;
+
+$alert-info-bg:               $state-info-bg;
+$alert-info-text:             $state-info-text;
+$alert-info-border:           $state-info-border;
+
+$alert-warning-bg:            $state-warning-bg;
+$alert-warning-text:          $state-warning-text;
+$alert-warning-border:        $state-warning-border;
+
+$alert-danger-bg:             $state-danger-bg;
+$alert-danger-text:           $state-danger-text;
+$alert-danger-border:         $state-danger-border;
