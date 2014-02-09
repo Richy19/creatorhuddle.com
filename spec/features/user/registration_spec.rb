@@ -5,6 +5,7 @@ feature "User registration" do
     visit root_path
     click_link 'sign up'
 
+    fill_in 'Username', with: 'username'
     fill_in 'Email', with: 'user@test.com'
     find('#user_password').set('password')
     find('#user_password_confirmation').set('password')

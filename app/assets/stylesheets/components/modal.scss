@@ -1,0 +1,18 @@
+.modal-header {
+  background: $brand-primary;
+  color: $gray-light;
+
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+
+  .close {
+    text-shadow: none;
+    color: $brand-danger;
+    opacity: 0.7;
+    margin: 1px 5px 0 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

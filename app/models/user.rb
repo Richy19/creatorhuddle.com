@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
 
   has_many :updates
 
+  validates :username, presence: true, uniqueness: true, length: 2..32
+  validates_format_of :username, with: /\A[-a-z0-9_.]+\Z/i, message: 'may only contain letters, numbers, "-", "_" and "."'
+
   def can_manage?(object)
     case object
     when Project
@@ -29,6 +32,6 @@ class User < ActiveRecord::Base
   end
 
   def name
-    email
+    "@#{username}"
   end
 end

@@ -11,3 +11,23 @@
     @include box-shadow(none);
   }
 }
+
+.has-error {
+  .form-control {
+    @include box-shadow(none);
+    @include border-radius(6px);
+    border: 2px solid $brand-danger;
+    padding: 5px 8px;
+
+    color: $text-color;
+
+    &:focus {
+      border-color: $gray-darker;
+      @include box-shadow(none);
+    }
+  }
+
+  .help-block, .control-label, .radio, .checkbox, .radio-inline, .checkbox-inline {
+    color: $brand-danger;
+  }
+}

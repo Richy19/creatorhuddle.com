@@ -2,6 +2,8 @@ class ProjectsController < ApplicationController
   include Cruddy::Controller
   respond_to :html, :json
 
+  decorates_assigned :project
+
   before_action :authenticate_user!, except: [:index, :show]
   before_action :load_resource_instance, only: [:edit, :update, :destroy]
   before_action :authorize_management!, only: [:edit, :update, :destroy]

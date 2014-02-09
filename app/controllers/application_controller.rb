@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   if Rails.env.production?
     rescue_from ActionController::RoutingError, ActionController::UnknownController, ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound, with: lambda { |exception| render_error 404, exception }
   end
@@ -26,5 +28,15 @@ class ApplicationController < ActionController::Base
 
   def require_admin
     redirect_to root_path and return unless user_signed_in? && current_user.admin?
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:username, :email, :password, :password_confirmation)
+    end
+
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:username, :email, :password, :password_confirmation, :current_password)
+    end
   end
 end

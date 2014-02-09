@@ -43,6 +43,8 @@ gem 'aws-sdk' # and store them on s3
 gem 'will_paginate' # pagination
 gem 'will_paginate-bootstrap'
 
+gem 'draper'
+
 # user auth
 gem 'devise'
 gem 'omniauth'

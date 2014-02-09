@@ -3,11 +3,11 @@
     <div class="jumbotron">
       <div class="container">
         <h1 class="project-name">
-          <%= @project.name %>
-          <% if user_signed_in? && current_user.can_manage?(@project) %>
+          <%= project.name %>
+          <% if user_signed_in? && current_user.can_manage?(project) %>
             <span class="project-actions pull-right">
-              <%= link_to 'edit project', edit_project_path(@project), class: 'btn btn-primary btn-sm' %>
-              <%= link_to 'delete project', project_path(@project), data: { confirm: 'Are you sure? Deleting this project can not be undone!' }, method: :delete, class: 'btn btn-primary btn-sm' %>
+              <%= link_to 'edit project', edit_project_path(project), class: 'btn btn-primary btn-sm' %>
+              <%= link_to 'delete project', project_path(project), data: { confirm: 'Are you sure? Deleting this project can not be undone!' }, method: :delete, class: 'btn btn-primary btn-sm' %>
             </span>
           <% end %>
         </h1>
@@ -19,7 +19,7 @@
     </div>
     <div class="project-description page-lead-text">
         <div class="container">
-          <%= @project.description %>
+          <%= project.description %>
         </div>
     </div>
   </div>
@@ -28,19 +28,19 @@
 
     <div class="row">
       <div class="col-md-8">
-        <% if user_signed_in? && current_user.can_manage?(@project) %>
+        <% if user_signed_in? && current_user.can_manage?(project) %>
           <div class="small-post-update-form clearfix">
             <h4>Post an update:</h4>
-            <%= simple_form_for Update.new(user: current_user, updateable: @project) do |f| %>
+            <%= simple_form_for Update.new(user: current_user, updateable: project) do |f| %>
               <%= f.input :content, label: false %>
-              <%= f.input :updateable_id, as: :hidden, value: @project.id %>
-              <%= f.input :updateable_type, as: :hidden, value: @project.class.to_s %>
+              <%= f.input :updateable_id, as: :hidden, value: project.id %>
+              <%= f.input :updateable_type, as: :hidden, value: project.class.to_s %>
               <%= f.submit 'Post!', class: 'btn btn-success pull-right' %>
             <% end %>
           </div>
         <% end %>
         <ul class="updates project-updates">
-          <% @project.updates.each do |update| %>
+          <% project.updates.each do |update| %>
             <li class="update project-update">
               <% if user_signed_in? && current_user.can_manage?(update) %>
                 <div class="small-manage-controls update-actions pull-right">
@@ -48,7 +48,7 @@
                   <%= link_to update_path(update), data: { confirm: 'Are you sure? Deleting this update can not be undone!' }, method: :delete, class: 'delete-update' do %><i class="fa fa-trash-o"></i><% end %>
                 </div>
               <% end %>
-              <h4>Posted <%= time_ago_in_words(update.created_at) %> ago by <%= update.user.name %>:</h4>
+              <h4>Posted <%= time_ago_in_words(update.created_at) %> ago by <%= update.user.name %></h4>
               <%= update.content %>
             </li>
           <% end %>
@@ -57,7 +57,7 @@
       <div class="col-md-4">
         <h4>Project by:</h4>
         <ul class="users project-users">
-          <% @project.users.each do |user| %>
+          <% project.users.each do |user| %>
             <li class="user project-user"><%= render 'users/avatar', user: user %> <%= link_to user.name, user_path(user) %></li>
           <% end %>
         </ul>
