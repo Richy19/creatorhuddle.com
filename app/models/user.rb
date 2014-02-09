@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :projects, through: :user_projects
 
   has_many :updates
+  has_many :follows
+
+  has_many :followed_projects, through: :follows, source: :followable, source_type: 'Project'
 
   validates :username, presence: true, uniqueness: true, length: 2..32
   validates_format_of :username, with: /\A[-a-z0-9_.]+\Z/i, message: 'may only contain letters, numbers, "-", "_" and "."'
@@ -21,6 +24,18 @@ class User < ActiveRecord::Base
     end
 
     false
+  end
+
+  def follow(object)
+    follows.create!(followable: object)
+  end
+
+  def follows?(object)
+    !!follow_for(object)
+  end
+
+  def follow_for(object)
+    follows.where(followable_type: object.class.to_s, followable_id: object.id).first
   end
 
   def can_manage_project?(project)

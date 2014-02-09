@@ -12,8 +12,22 @@
           <% end %>
         </h1>
         <div class="stats">
-          <span class="label label-info"><i class="fa fa-heart"></i> 20 likes</span>
-          <span class="label label-info"><i class="fa fa-rss"></i> 173 followers</span>
+          <% if user_signed_in? %>
+            <% if current_user.follows?(@project) %>
+              <%= link_to follow_path(current_user.follow_for(@project)), method: :delete, class: 'btn btn-danger btn-unfollow' do %>
+                <i class="fa fa-times-circle-o"></i> unfollow
+              <% end %>
+            <% else %>
+              <%= simple_form_for Follow.new(followable: project) do |f| %>
+                <%= f.input :followable_id, as: :hidden %>
+                <%= f.input :followable_type, as: :hidden %>
+                <button type="submit" class="btn btn-success btn-follow">
+                  <i class="fa fa-rss"></i> follow
+                </button>
+              <% end %>
+            <% end %>
+          <% end %>
+          <span class="follow-count"><%= project.followers.count %> followers</span>
         </div>
       </div>
     </div>
@@ -58,6 +72,13 @@
         <h4>Project by:</h4>
         <ul class="users project-users">
           <% project.users.each do |user| %>
+            <li class="user project-user"><%= render 'users/avatar', user: user %> <%= link_to user.name, user_path(user) %></li>
+          <% end %>
+        </ul>
+
+        <h4>Followers:</h4>
+        <ul class="users project-users">
+          <% project.followers.first(20).each do |user| %>
             <li class="user project-user"><%= render 'users/avatar', user: user %> <%= link_to user.name, user_path(user) %></li>
           <% end %>
         </ul>

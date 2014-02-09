@@ -51,4 +51,25 @@ describe User do
       build(:user, username: 'space@name').should_not be_valid
     end
   end
+
+  describe "following projects" do
+    let(:project) { create :project }
+    let(:user) { create :user }
+
+    it "can follow projects" do
+      user.follow(project)
+      user.followed_projects.should eq([project])
+    end
+
+    it "knows if it follows a project" do
+      user.follows?(project).should be_false
+      user.follow(project)
+      user.follows?(project).should be_true
+    end
+
+    it "gets the follow for a given object" do
+      user.follow(project)
+      user.follow_for(project).should be_a_kind_of(Follow)
+    end
+  end
 end

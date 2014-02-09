@@ -17,8 +17,7 @@
               <% end %>
               <p><%= project.description %></p>
               <p class="stats">
-                <span class="label label-info"><i class="fa fa-heart"></i> 20 likes</span>
-                <span class="label label-info"><i class="fa fa-rss"></i> 173 followers</span>
+                <span class="label label-info"><i class="fa fa-rss"></i> <%= project.followers.count %> followers</span>
               </p>
             </li>
           <% end %>

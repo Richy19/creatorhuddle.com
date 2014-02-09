@@ -1,4 +1,6 @@
 CreatorhuddleCom::Application.routes.draw do
+  resources :follows
+
   devise_for :users
 
   root "pages#home"
