@@ -8,7 +8,7 @@ feature "Editing projects" do
     visit root_path
     click_link 'projects'
     first(:link, project.name).click
-    click_link 'edit project details'
+    click_link 'edit project'
 
     fill_in 'Name', with: 'new project name'
     click_button 'Update Project'

@@ -6,7 +6,7 @@ feature "Creating projects" do
 
     visit root_path
     click_link 'projects'
-    click_link 'add a project'
+    click_link 'add'
 
     fill_in 'Name', with: 'Project name'
     fill_in 'Description', with: 'Blah blah blah'

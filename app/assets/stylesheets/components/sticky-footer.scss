@@ -21,6 +21,7 @@ body {
 #footer {
   height: 50px;
   background-color: $brand-primary;
+  -webkit-font-smoothing: antialiased;
 
   .text-muted {
     margin: 15px 0;

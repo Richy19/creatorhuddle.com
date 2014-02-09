@@ -1,0 +1,7 @@
+<%= simple_form_for update do |f| %>
+  <%= f.input :content %>
+  <%= f.input :updateable_id, as: :hidden %>
+  <%= f.input :updateable_type, as: :hidden %>
+
+  <%= f.submit 'Save', class: 'btn btn-success' %>
+<% end %>

@@ -1,15 +1,27 @@
 .your-projects {
-  padding: 13px 0 0;
+  padding: 30px;
+  background: $gray-lighter;
+  @include border-radius(6px);
+
+  h3 {
+    margin: 0 0 30px 0;
+  }
 
   .project {
     padding: 0;
     border: 0;
 
-    border-bottom: 1px solid $gray-lighter;
-    padding: 20px 0;
+    border-top: 1px solid $gray-light;
+    padding: 20px 0 0;
 
     &:first-child {
       padding-top: 0;
+      border-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
     }
   }
 }

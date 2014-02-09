@@ -1,0 +1,9 @@
+.page-lead-text {
+  //border-bottom: 2px solid darken($gray-lighter, 5%);
+  padding: 20px 0;
+  font-size: 18px;
+  color: darken($gray-darker, 20%);
+  background: $gray-lighter;
+
+  font-family: $font-family-serif;
+}

@@ -1,23 +1,25 @@
+<header class="masthead">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Projects <small>great stuff by great people</small></h1>
+    </div>
+  </div>
+</header>
 <div class="container">
   <div class="row">
     <div class="col-sm-8 project-list">
-      <div class="page-header">
-        <h1>Projects <small>great stuff by great people</small></h1>
-      </div>
       <% if @projects.any? %>
         <ul class="projects">
           <% @projects.each do |project| %>
             <li class="project">
-              <div class="well">
-                <%= link_to project_path(project) do %>
-                  <h4><%= project.name %></h4>
-                <% end %>
-                <p><%= project.description %></p>
-                <p class="stats">
-                  <span class="label label-info"><i class="fa fa-heart"></i> 20 likes</span>
-                  <span class="label label-info"><i class="fa fa-rss"></i> 173 followers</span>
-                </p>
-              </div>
+              <%= link_to project_path(project) do %>
+                <h3><%= project.name %></h3>
+              <% end %>
+              <p><%= project.description %></p>
+              <p class="stats">
+                <span class="label label-info"><i class="fa fa-heart"></i> 20 likes</span>
+                <span class="label label-info"><i class="fa fa-rss"></i> 173 followers</span>
+              </p>
             </li>
           <% end %>
         </ul>
@@ -27,22 +29,20 @@
     </div>
     <div class="col-sm-4">
       <div class="your-projects">
-        <div class="page-header">
-          <div class="projects-actions pull-right">
-            <%= link_to 'add a project', new_project_path, class: 'btn btn-primary' %>
-          </div>
-          <h3>Your Projects</h3>
+        <div class="projects-actions pull-right">
+          <%= link_to new_project_path, class: 'btn btn-success' do %>
+            add <i class="fa fa-plus"></i>
+          <% end %>
         </div>
+        <h3>Your Projects</h3>
 
         <div class="your-projects-list-wrapper">
           <% if user_signed_in? && current_user.projects.any? %>
             <ul class="projects">
               <% current_user.projects.order(name: :desc).each do |project| %>
                 <li class="project">
-                  <%= link_to project_path(project) do %>
-                    <h4><%= project.name %></h4>
-                    <p><%= project.description %></p>
-                  <% end %>
+                  <h4><%= link_to project.name, project_path(project) %></h4>
+                  <p><%= project.description %></p>
                 </li>
               <% end %>
             </ul>

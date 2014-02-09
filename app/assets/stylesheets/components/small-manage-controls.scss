@@ -1,0 +1,9 @@
+.small-manage-controls {
+  a {
+    color: $gray-dark;
+
+    &:hover {
+      color: $brand-info;
+    }
+  }
+}

@@ -1,25 +1,25 @@
 $font-family-sans-serif: 'adelle-sans', 'helvetica', 'arial', sans-serif;
 $font-family-serif: "adelle", 'cambria', 'geogria', serif;
 
-$gray-lighter:           #F8F6EC; // #eee
-$gray-light:             shade($gray-lighter, 10%);
-$gray:                   shade($gray-lighter, 20%);
-$gray-dark:              shade($gray-lighter, 30%);
-$gray-darker:            shade($gray-lighter, 40%);
+$gray-light:             #E6E4DE;
+$gray-lighter:           lighten($gray-light, 7%);
+$gray:                   shade($gray-light, 10%);
+$gray-dark:              shade($gray-light, 20%);
+$gray-darker:            shade($gray-light, 30%);
 
 $brand-primary: #333;
 $brand-secondary: #ffc200;
-$brand-danger: #dd3737;
-$brand-warning: #f0ad4e;
-$brand-info: #6d6d6d;
-$brand-success: #2bcb2f;
+$brand-danger: #FA6C3F;
+$brand-warning: #F1D331;
+$brand-info: #92CCBC;
+$brand-success: #98CB2B;
 
 
 // Scaffolding
 // -------------------------
 
 $body-bg:               #fff;
-$text-color:            shade($body-bg, 65%);
+$text-color:            $gray-darker;
 
 // Components
 // -------------------------
@@ -85,11 +85,11 @@ $btn-link-disabled-color:        $gray-light;
 // -------------------------
 
 $state-success-text:             #fff;
-$state-success-bg:               $gray-darker;
+$state-success-bg:               $brand-success;
 $state-success-border:           $state-success-bg;
 
 $state-info-text:                #fff;
-$state-info-bg:                  $gray-darker;
+$state-info-bg:                  $brand-info;
 $state-info-border:              $state-info-bg;
 
 $state-warning-text:             #fff;

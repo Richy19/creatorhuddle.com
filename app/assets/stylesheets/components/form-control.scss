@@ -1,0 +1,13 @@
+.form-control {
+  @include box-shadow(none);
+  @include border-radius(6px);
+  border: 2px solid $gray;
+  padding: 5px 8px;
+
+  color: $text-color;
+
+  &:focus {
+    border-color: $gray-darker;
+    @include box-shadow(none);
+  }
+}

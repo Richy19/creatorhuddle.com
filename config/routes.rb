@@ -1,9 +1,11 @@
 CreatorhuddleCom::Application.routes.draw do
-  resources :projects
-
   devise_for :users
 
   root "pages#home"
+
+  resources :updates
+  resources :users
+  resources :projects
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
