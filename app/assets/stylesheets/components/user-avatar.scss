@@ -1,0 +1,15 @@
+.user-avatar {
+  $avatar-size: 32px;
+
+  display: inline-block;
+  width: $avatar-size;
+  height: $avatar-size;
+  background: $brand-info;
+  color: #fff;
+  font-size: $avatar-size / 2;
+  text-align: center;
+  line-height: $avatar-size;
+  @include border-radius(4px);
+
+  margin: 0 5px 0 0;
+}
