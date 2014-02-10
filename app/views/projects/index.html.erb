@@ -8,23 +8,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 project-list">
-      <% if @projects.any? %>
-        <ul class="projects">
-          <% @projects.each do |project| %>
-            <li class="project">
-              <%= link_to project_path(project) do %>
-                <h3><%= project.name %></h3>
-              <% end %>
-              <p><%= project.description %></p>
-              <p class="stats">
-                <span class="label label-info"><i class="fa fa-rss"></i> <%= project.followers.count %> followers</span>
-              </p>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        <em>No projects found</em>
-      <% end %>
+      <%= render 'list', projects: @projects %>
     </div>
     <div class="col-sm-4">
       <div class="your-projects">

@@ -8,7 +8,7 @@ CreatorhuddleCom::Application.routes.draw do
   root "pages#home"
 
   resources :updates
-  resources :users
+  resources :users, param: :username
   resources :projects
 
   # Example of regular route:

@@ -1,0 +1,20 @@
+<div class="masthead">
+  <div class="jumbotron">
+    <div class="container">
+      <h1><%= user.name %></h1>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h4>Projects</h4>
+      <%= render 'projects/list', projects: user.projects %>
+    </div>
+    <div class="col-md-4">
+      <h4>Following</h4>
+      <%= render 'projects/small_list', projects: user.followed_projects %>
+    </div>
+  </div>
+</div>

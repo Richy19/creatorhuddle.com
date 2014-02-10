@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     false
   end
 
+  def to_param
+    username
+  end
+
   def follow(object)
     follows.create!(followable: object)
   end

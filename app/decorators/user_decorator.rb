@@ -12,6 +12,6 @@ class UserDecorator < Draper::Decorator
   #   end
 
   def name
-    h.link_to object.name, '#'
+    h.link_to object.name, h.user_path(object)
   end
 end
