@@ -4,15 +4,13 @@
       <div class="container">
         <h1 class="project-name">
           <%= project.name %>
-          <% if user_signed_in? && current_user.can_manage?(project) %>
-            <span class="project-actions pull-right">
-              <%= link_to 'edit project', edit_project_path(project), class: 'btn btn-primary btn-sm' %>
-              <%= link_to 'delete project', project_path(project), data: { confirm: 'Are you sure? Deleting this project can not be undone!' }, method: :delete, class: 'btn btn-primary btn-sm' %>
-            </span>
-          <% end %>
         </h1>
         <div class="stats">
           <% if user_signed_in? %>
+            <% if current_user.can_manage?(project) %>
+              <%= link_to 'edit project', edit_project_path(project), class: 'btn btn-primary' %>
+              <%= link_to 'delete project', project_path(project), data: { confirm: 'Are you sure? Deleting this project can not be undone!' }, method: :delete, class: 'btn btn-primary' %>
+            <% end %>
             <% if current_user.follows?(@project) %>
               <%= link_to follow_path(current_user.follow_for(@project)), method: :delete, class: 'btn btn-danger btn-unfollow' do %>
                 <i class="fa fa-times-circle-o"></i> unfollow

@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :notifications, foreign_key: :receiver_id
 
   validates :username, presence: true, uniqueness: true, length: 2..32
-  validates_format_of :username, with: /\A[-a-z0-9_.]+\Z/i, message: 'may only contain letters, numbers, "-", "_" and "."'
+  validates_format_of :username, with: /\A[-a-z0-9_]+\Z/i, message: 'may only contain letters, numbers, "-" and "_"'
 
   def can_manage?(object)
     case object
