@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209214556) do
+ActiveRecord::Schema.define(version: 20140209234840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,22 @@ ActiveRecord::Schema.define(version: 20140209214556) do
   add_index "follows", ["followable_id"], name: "index_follows_on_followable_id", using: :btree
   add_index "follows", ["followable_type"], name: "index_follows_on_followable_type", using: :btree
   add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
+
+  create_table "notifications", force: true do |t|
+    t.integer  "receiver_id"
+    t.integer  "sender_id"
+    t.integer  "target_id"
+    t.string   "target_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "read",        default: false, null: false
+  end
+
+  add_index "notifications", ["read"], name: "index_notifications_on_read", using: :btree
+  add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id", using: :btree
+  add_index "notifications", ["sender_id"], name: "index_notifications_on_sender_id", using: :btree
+  add_index "notifications", ["target_id"], name: "index_notifications_on_target_id", using: :btree
+  add_index "notifications", ["target_type"], name: "index_notifications_on_target_type", using: :btree
 
   create_table "projects", force: true do |t|
     t.text     "name"

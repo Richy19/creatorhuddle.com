@@ -12,4 +12,21 @@ class Update < ActiveRecord::Base
       errors[:base] << "You can't manage updates for that!"
     end
   end
+
+  def save_and_notify
+    if new_record?
+      case updateable
+      when Project
+        notify_project_followers
+      end
+    end
+
+    save
+  end
+
+  def notify_project_followers
+    updateable.followers.find_each do |follower|
+      Notification.create!(target: self, receiver: follower, sender: user)
+    end
+  end
 end

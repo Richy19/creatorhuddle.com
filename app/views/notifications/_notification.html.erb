@@ -1,0 +1,6 @@
+<%= case notification.target
+    when Update
+      render 'notifications/content/update', notification: notification
+    end
+%>
+<span class="text-muted notification-time"> - <%= time_ago_in_words(notification.created_at) %> ago</span>

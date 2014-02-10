@@ -17,7 +17,7 @@ class UpdatesController < ApplicationController
     @update = initialize_resource_instance(resource_params)
     @update.user = current_user
 
-    if resource.save
+    if resource.save_and_notify
       case @update.updateable_type
       when 'Project'
         redirect_to project_path(@update.updateable)

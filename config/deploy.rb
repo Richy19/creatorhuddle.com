@@ -73,7 +73,7 @@ end
 # end
 # after :deploy, 'notify_rollbar'
 
-# after 'deploy:restart', 'unicorn:restart'
+after 'deploy:restart', 'unicorn:restart'
 
 namespace :sidekiq do
   desc "Start sidekiq workers"

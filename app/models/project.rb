@@ -4,4 +4,5 @@ class Project < ActiveRecord::Base
   has_many :updates, as: :updateable
   has_many :follows, as: :followable
   has_many :followers, through: :follows, source: :user
+  has_many :notifications, as: :target, class_name: 'Notification'
 end

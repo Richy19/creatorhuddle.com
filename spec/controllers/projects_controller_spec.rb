@@ -1,6 +1,27 @@
 require 'spec_helper'
 
 describe ProjectsController do
+  describe "GET show" do
+    context "when logged in" do
+      let(:current_user) { create :user }
+      before { sign_in current_user }
+
+      let(:project_owner) { create :user }
+      let(:project) { create :project, users: [project_owner] }
+      let(:update) { create :update, user: project_owner, updateable: project }
+
+      context 'when the current user has an unread update notification' do
+        let!(:notification) { create :notification, target: update, sender: project_owner, receiver: current_user }
+
+        it "marks the notification as read" do
+          get :show, id: project.id
+          current_user.notifications.unread.should be_empty
+          notification.reload.read.should be_true
+        end
+      end
+    end
+  end
+
   describe "POST create" do
     context "when logged in" do
       let(:current_user) { create(:user) }

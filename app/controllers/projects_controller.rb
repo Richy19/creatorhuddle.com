@@ -5,8 +5,30 @@ class ProjectsController < ApplicationController
   decorates_assigned :project
 
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :load_resource_instance, only: [:edit, :update, :destroy]
+  before_action :load_resource_instance, only: [:show, :edit, :update, :destroy]
   before_action :authorize_management!, only: [:edit, :update, :destroy]
+
+  before_action :mark_notifications_as_read, only: [:show]
+
+  def mark_notifications_as_read
+    if user_signed_in?
+      # this might be expensive when there are lots of updates
+      # so let's make sure they have notifications
+      if current_user.notifications.unread.any?
+        @project.updates.find_each do |update|
+          current_user.notifications.where(target_id: update.id).find_each do |notification|
+            notification.read = true
+            notification.save
+          end
+        end
+      end
+    end
+  end
+
+  # redefining this to prevent loading the project twice
+  def show
+    respond_with @project
+  end
 
   def initialize_resource_instance(params=nil)
     current_user.projects.build(params)

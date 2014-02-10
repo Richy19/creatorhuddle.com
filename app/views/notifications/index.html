@@ -1,0 +1,17 @@
+<div class="masthead">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Notifications</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <ul class="notifications">
+    <% @notifications.each do |notification| %>
+      <li class="notification">
+        <%= render 'notification', notification: notification %>
+      </li>
+    <% end %>
+  </ul>
+</div>

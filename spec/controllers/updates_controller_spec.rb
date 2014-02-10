@@ -33,6 +33,11 @@ describe UpdatesController do
               post :create, update: update_params
             end.to change(Update, :count).by(1)
           end
+
+          it 'creates notifications' do
+            Update.any_instance.should_receive(:save_and_notify)
+            post :create, update: update_params
+          end
         end
 
         context "when the user can't manage the project" do
