@@ -2,6 +2,9 @@
 
 FactoryGirl.define do
   factory :update do
-    content "Update content"
+    content 'Update content'
+
+    user { FactoryGirl.create(:user) }
+    updateable { |update| create :project, users: [update.user] }
   end
 end

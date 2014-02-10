@@ -27,10 +27,14 @@ gem 'cruddy'
 gem 'sidekiq'
 gem 'whenever', require: false
 
+# auto-inline email styles
 gem 'premailer-rails'
 
 # sitemap generation
 gem 'big_sitemap'
+
+# nested sets for comments
+gem 'awesome_nested_set', '~> 3.0.0.rc.3'
 
 gem 'compass-rails'
 gem 'bootstrap-sass'

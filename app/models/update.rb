@@ -2,6 +2,7 @@
 class Update < ActiveRecord::Base
   belongs_to :updateable, polymorphic: true, touch: true
   belongs_to :user
+  has_many :comments, as: :commentable
 
   validates :user, presence: true
 

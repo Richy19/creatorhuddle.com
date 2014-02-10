@@ -1,4 +1,6 @@
 CreatorhuddleCom::Application.routes.draw do
+  resources :comments
+
   resources :notifications
 
   resources :follows
