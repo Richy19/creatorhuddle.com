@@ -25,6 +25,15 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def get_resource_collection
+    if params[:show] == 'followed'
+      authenticate_user!
+      current_user.followed_projects.order(updated_at: :desc)
+    else
+      Project.order(updated_at: :desc)
+    end
+  end
+
   # redefining this to prevent loading the project twice
   def show
     respond_with @project

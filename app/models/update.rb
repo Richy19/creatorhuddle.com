@@ -1,6 +1,6 @@
 # an update posted on a project or user page
 class Update < ActiveRecord::Base
-  belongs_to :updateable, polymorphic: true
+  belongs_to :updateable, polymorphic: true, touch: true
   belongs_to :user
 
   validates :user, presence: true

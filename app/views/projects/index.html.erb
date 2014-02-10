@@ -2,6 +2,11 @@
   <div class="jumbotron">
     <div class="container">
       <h1>Projects <small>great stuff by great people</small></h1>
+
+      <ul class="nav nav-tabs">
+        <li <%= 'class="active"'.html_safe if params[:show].nil? %>><%= link_to 'recently updated', projects_path %></li>
+        <li <%= 'class="active"'.html_safe if params[:show] == 'followed' %>><%= link_to 'projects you follow', projects_path(show: 'followed') %></li>
+      </ul>
     </div>
   </div>
 </header>
