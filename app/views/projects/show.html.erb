@@ -65,7 +65,7 @@
                 <%= update.content %>
               </div>
               <div class="update-footer">
-                <%= update.comments.count %> comments total.
+                <i class="fa fa-comments"></i> <%= update.comments.count %> comments.
                 <button type="button" class="btn btn-plain" data-toggle="collapse" data-target="#post-comment-update-<%= update.id %>">Share your thoughts</button>
                 <div class="post-comment collapse clearfix" id="post-comment-update-<%= update.id %>">
                   <%= simple_form_for Comment.new(user: current_user, commentable: update) do |f| %>
@@ -80,7 +80,7 @@
                 <ul class="comments">
                   <% update.comments.each do |comment| %>
                     <li class="comment">
-                      <h5><%= render 'users/avatar', user: comment.user %> <%= comment.user.name %> <span class="pull-right"><%= time_ago_in_words comment.created_at %> ago</span></h5>
+                      <h5><%= render 'users/avatar', user: comment.user %> <%= comment.user.name %> <span class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words comment.created_at %> ago</span></h5>
                       <%= comment.content %>
                     </li>
                   <% end %>
