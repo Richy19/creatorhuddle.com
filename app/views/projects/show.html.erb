@@ -66,7 +66,7 @@
               </div>
               <div class="update-footer">
                 <%= update.comments.count %> comments total.
-                <a class="" data-toggle="collapse" data-target="#post-comment-update-<%= update.id %>">Share your thoughts</a>
+                <button type="button" class="btn btn-plain" data-toggle="collapse" data-target="#post-comment-update-<%= update.id %>">Share your thoughts</button>
                 <div class="post-comment collapse clearfix" id="post-comment-update-<%= update.id %>">
                   <%= simple_form_for Comment.new(user: current_user, commentable: update) do |f| %>
                     <%= f.input :commentable_id, as: :hidden, value: project.id %>
