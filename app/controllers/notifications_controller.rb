@@ -6,6 +6,6 @@ class NotificationsController < ApplicationController
   before_action :authenticate_user!
 
   def get_resource_collection
-    current_user.notifications
+    current_user.notifications.order(created_at: :desc)
   end
 end

@@ -20,6 +20,13 @@ class ProjectsController < ApplicationController
             notification.read = true
             notification.save
           end
+
+          update.comments.find_each do |comment|
+            current_user.notifications.where(target_id: comment.id).find_each do |notification|
+              notification.read = true
+              notification.save
+            end
+          end
         end
       end
     end

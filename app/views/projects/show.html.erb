@@ -47,13 +47,13 @@
               <%= f.input :content, label: false %>
               <%= f.input :updateable_id, as: :hidden, value: project.id %>
               <%= f.input :updateable_type, as: :hidden, value: project.class.to_s %>
-              <%= f.submit 'Post!', class: 'btn btn-success pull-right' %>
+              <%= f.submit 'post update', class: 'btn btn-success pull-right' %>
             <% end %>
           </div>
         <% end %>
         <ul class="updates project-updates">
           <% project.updates.each do |update| %>
-            <li class="update project-update">
+            <li id="update-<%= update.id %>" class="update project-update clearfix">
               <% if user_signed_in? && current_user.can_manage?(update) %>
                 <div class="small-manage-controls update-actions pull-right">
                   <%= link_to edit_update_path(update), class: 'edit-update' do %><i class="fa fa-pencil"></i><% end %>
@@ -61,7 +61,31 @@
                 </div>
               <% end %>
               <h4>Posted <%= time_ago_in_words(update.created_at) %> ago by <%= update.user.name %></h4>
-              <%= update.content %>
+              <div class="update-content">
+                <%= update.content %>
+              </div>
+              <div class="update-footer">
+                <%= update.comments.count %> comments total.
+                <a class="" data-toggle="collapse" data-target="#post-comment-update-<%= update.id %>">Share your thoughts</a>
+                <div class="post-comment collapse clearfix" id="post-comment-update-<%= update.id %>">
+                  <%= simple_form_for Comment.new(user: current_user, commentable: update) do |f| %>
+                    <%= f.input :commentable_id, as: :hidden, value: project.id %>
+                    <%= f.input :commentable_type, as: :hidden, value: project.class.to_s %>
+                    <%= f.input :content, label: false %>
+                    <%= f.submit 'post comment', class: 'btn btn-success pull-right submit-comment' %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="update-comments">
+                <ul class="comments">
+                  <% update.comments.each do |comment| %>
+                    <li class="comment">
+                      <h5><%= render 'users/avatar', user: comment.user %> <%= comment.user.name %> <span class="pull-right"><%= time_ago_in_words comment.created_at %> ago</span></h5>
+                      <%= comment.content %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
             </li>
           <% end %>
         </ul>

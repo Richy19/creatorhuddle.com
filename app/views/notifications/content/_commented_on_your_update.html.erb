@@ -1,0 +1,7 @@
+<%
+  update = notification.target.commentable
+  sender = notification.sender
+  project = update.updateable
+%>
+
+<%= sender.decorate.name %> commented on your <%= link_to 'update', "#{project_path(project)}\#update-#{update.id}" %> on <%= link_to project.name, project_path(project) %>

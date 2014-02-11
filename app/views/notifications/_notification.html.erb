@@ -1,6 +1,12 @@
 <%= case notification.target
     when Update
       render 'notifications/content/update', notification: notification
+    when Comment
+      if notification.target.commentable.user == current_user
+        render 'notifications/content/commented_on_your_update', notification: notification
+      elsif notification.target.parent == nil
+        render 'notifications/content/also_commented', notification: notification
+      end
     end
 %>
 <span class="text-muted notification-time"> - <%= time_ago_in_words(notification.created_at) %> ago</span>
