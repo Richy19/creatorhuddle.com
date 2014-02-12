@@ -29,9 +29,9 @@
         </div>
       </div>
     </div>
-    <div class="project-description page-lead-text">
+    <div class="project-summary page-lead-text">
         <div class="container">
-          <%= project.description %>
+          <%= project.summary %>
         </div>
     </div>
   </div>
@@ -40,6 +40,10 @@
 
     <div class="row">
       <div class="col-md-8">
+        <h2>Details:</h2>
+        <%= project.details %>
+
+        <h2>Recent Updates:</h2>
         <% if user_signed_in? && current_user.can_manage?(project) %>
           <div class="small-post-update-form clearfix">
             <h4>Post an update:</h4>
@@ -91,6 +95,13 @@
         </ul>
       </div>
       <div class="col-md-4">
+        <% if project.homepage %>
+          <h4>Homepage:</h4>
+          <p>
+            <i class="fa fa-globe"></i> <a href="<%= project.homepage %>"><%= project.homepage %></a>
+          </p>
+        <% end %>
+
         <h4>Project by:</h4>
         <ul class="users project-users">
           <% project.users.each do |user| %>

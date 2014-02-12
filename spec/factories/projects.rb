@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :project do
     sequence(:name) { |n| "project #{n}" }
-    description { Faker::Lorem.paragraph }
+    summary { Faker::Lorem.paragraph }
   end
 end

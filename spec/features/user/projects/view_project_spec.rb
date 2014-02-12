@@ -9,7 +9,7 @@ feature "Viewing a project" do
     click_link project.name
 
     page.should have_selector('h1', text: /#{project.name}/i)
-    page.should have_text(project.description)
+    page.should have_text(project.summary)
 
     # user shouldn't see management buttons
     page.should_not have_text('edit project')
@@ -25,7 +25,7 @@ feature "Viewing a project" do
     first(:link, project.name).click
 
     page.should have_selector('h1', text: /#{project.name}/i)
-    page.should have_text(project.description)
+    page.should have_text(project.summary)
 
     # user should see management buttons
     page.should have_text('edit project')

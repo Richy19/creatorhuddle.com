@@ -14,6 +14,6 @@ feature "Editing projects" do
     click_button 'Update Project'
 
     page.should have_selector('h1', text: 'new project name')
-    page.should have_text(project.description)
+    page.should have_text(project.summary)
   end
 end

@@ -1,6 +1,8 @@
 <%= simple_form_for [@project] do |f| %>
   <%= f.input :name, as: :string %>
-  <%= f.input :description %>
+  <%= f.input :homepage, as: :string %>
+  <%= f.input :summary, hint: 'give us a short summary of your project' %>
+  <%= f.input :details, hint: 'all the details!' %>
 
   <%= f.submit class: 'btn btn-success' %>
 <% end %>
