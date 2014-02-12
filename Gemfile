@@ -49,6 +49,8 @@ gem 'will_paginate-bootstrap'
 
 gem 'draper'
 
+gem 'rb-readline' # for rails c on prod
+
 # user auth
 gem 'devise'
 gem 'omniauth'

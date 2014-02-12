@@ -220,6 +220,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
     rake (10.1.1)
+    rb-readline (0.5.1)
     rdoc (4.1.1)
       json (~> 1.4)
     redis (3.0.7)
@@ -350,6 +351,7 @@ DEPENDENCIES
   poltergeist
   premailer-rails
   rails (= 4.1.0.beta1)
+  rb-readline
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc
