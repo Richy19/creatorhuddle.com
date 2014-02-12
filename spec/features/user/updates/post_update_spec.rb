@@ -8,7 +8,7 @@ feature 'Posting updates' do
     visit project_path(project)
 
     fill_in 'update_content', with: 'this is my update'
-    click_button 'Post'
+    click_button 'post'
 
     page.should have_text 'this is my update'
   end

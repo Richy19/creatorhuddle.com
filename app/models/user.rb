@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
       return can_manage_project?(object)
     when Update
       return can_manage_update?(object)
+    when Comment
+      return can_manage_update?(object)
     end
 
     false
@@ -51,6 +53,10 @@ class User < ActiveRecord::Base
 
   def can_manage_update?(update)
     update.user_id == id
+  end
+
+  def can_manage_comment?(comment)
+    comment.user_id == id
   end
 
   def name

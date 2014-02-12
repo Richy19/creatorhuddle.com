@@ -32,6 +32,21 @@ describe User do
 
       user.can_manage?(update).should be_false
     end
+
+    it 'allows a user to manage a comment that they own' do
+      user = create :user
+      comment = create :comment, user: user
+
+      user.can_manage?(comment).should be_true
+    end
+
+    it "doesn't allow a user to manage a comment that they don't own" do
+      user = create :user
+      other_user = create :user
+      comment = create :comment, user: other_user
+
+      user.can_manage?(comment).should be_false
+    end
   end
 
   describe 'username validations' do

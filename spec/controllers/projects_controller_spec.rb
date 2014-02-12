@@ -19,6 +19,17 @@ describe ProjectsController do
           notification.reload.read.should be_true
         end
       end
+
+      context 'when the current user has an unread update comment notification' do
+        let(:comment) { create :comment, commentable: update, user: project_owner }
+        let!(:notification) { create :notification, target: comment, sender: project_owner, receiver: current_user }
+
+        it "marks the notification as read" do
+          get :show, id: project.id
+          current_user.notifications.unread.should be_empty
+          notification.reload.read.should be_true
+        end
+      end
     end
   end
 
