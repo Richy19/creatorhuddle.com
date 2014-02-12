@@ -253,6 +253,8 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    sendgrid (1.2.0)
+      json
     sepastian-capistrano3-unicorn (0.3.2)
       capistrano (~> 3.0.0)
     sidekiq (2.17.4)
@@ -355,6 +357,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc
+  sendgrid
   sepastian-capistrano3-unicorn
   sidekiq
   simple_form

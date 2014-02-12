@@ -27,8 +27,9 @@ gem 'cruddy'
 gem 'sidekiq'
 gem 'whenever', require: false
 
-# auto-inline email styles
+# email stuff
 gem 'premailer-rails'
+gem 'sendgrid'
 
 # sitemap generation
 gem 'big_sitemap'
