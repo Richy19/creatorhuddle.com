@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
     if user_signed_in?
       # this might be expensive when there are lots of updates
       # so let's make sure they have notifications
-      if false # current_user.notifications.unread.any?
+      if current_user.notifications.unread.any?
         @project.updates.find_each do |update|
           current_user.notifications.where(target_id: update.id).find_each do |notification|
             notification.read = true
