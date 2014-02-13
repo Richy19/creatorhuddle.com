@@ -5,6 +5,7 @@ FactoryGirl.define do
     receiver_id 1
     sender_id 1
     target_id 1
+    action 'factory'
     target_type "MyString"
   end
 end

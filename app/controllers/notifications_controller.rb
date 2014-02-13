@@ -3,6 +3,8 @@ class NotificationsController < ApplicationController
   actions :index
   respond_to :html, :json
 
+  decorates_assigned :notifications
+
   before_action :authenticate_user!
 
   def get_resource_collection

@@ -33,6 +33,11 @@ describe Update do
       Notification.last.receiver.should eq(follower)
     end
 
+    it "assigns the correct action to the notification" do
+      update.save_and_notify
+      Notification.last.action.should eq('posted_update')
+    end
+
     it "assigns the correct target to the notification" do
       update.save_and_notify
       update.reload

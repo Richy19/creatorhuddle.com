@@ -27,7 +27,7 @@ class Update < ActiveRecord::Base
 
   def notify_project_followers
     updateable.followers.find_each do |follower|
-      Notification.create!(target: self, receiver: follower, sender: user)
+      Notification.create!(target: self, receiver: follower, sender: user, action: :posted)
     end
   end
 end

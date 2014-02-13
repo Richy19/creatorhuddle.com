@@ -1,7 +1,0 @@
-<%
-  update = notification.target
-  sender = notification.sender
-  project = update.updateable
-%>
-
-<%= sender.decorate.name %> posted a new update to <%= link_to project.name, project_path(project) %>

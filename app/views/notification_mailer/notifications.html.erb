@@ -1,0 +1,11 @@
+<%= content_for(:header) do %>
+  <p>new notifications on creatorhuddle</p>
+<% end %>
+
+<div class="notifications">
+  <% @notifications.each do |notification| %>
+    <p class="notification">
+      <%= notification.display %>
+    </p>
+  <% end %>
+</div>

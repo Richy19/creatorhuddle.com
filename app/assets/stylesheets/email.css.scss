@@ -1,0 +1,114 @@
+@import "compass";
+@import "variables";
+
+body {
+  background-color: $gray-lighter;
+  color: $gray-darker;
+  margin: 0;
+  padding: 0;
+}
+
+td, p {
+  color: $text-color;
+}
+
+a, a:visited {
+  color: $brand-info;
+  text-decoration: none;
+}
+
+img {
+  border: 0;
+  display: block;
+}
+
+.product-image {
+  margin-bottom: 10px;
+}
+
+.product-name {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+p {
+  margin-top: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: $gray-darker;
+}
+
+h1 {
+  color: $brand-primary;
+}
+
+h2 {
+  color: #666666;
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+h3 {
+  color: #666666;
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.outer-container-cell {
+  width: 100%;
+  background-color: $gray-lighter;
+}
+
+.inner-container-cell {
+  background: #ffffff;
+}
+
+.header-container-cell {
+  background: $brand-primary;
+
+  h1, img, p {
+    color: #ffffff;
+    margin: 0;
+  }
+
+  img {
+    margin-bottom: 5px;
+    font-size: 24px;
+  }
+
+  p {
+    padding-left: 5px;
+    font-size: 18px;
+  }
+}
+
+.cta-container-cell {
+  background: $brand-success;
+
+  h1, img, p {
+    color: #fff;
+    margin: 0;
+  }
+
+  p {
+    padding-left: 5px;
+    font-size: 18px;
+  }
+}
+
+.footer-container-cell {
+  font-size: 10px;
+
+  span {
+    font-size: 10px;
+    color: $gray;
+  }
+}
+
+p.notification {
+  margin: 0 0 10px 0;
+}

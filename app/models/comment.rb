@@ -19,11 +19,11 @@ class Comment < ActiveRecord::Base
   def notify_update_participants
     update_owner = commentable.user
 
-    Notification.create!(target: self, receiver: update_owner, sender: user)
+    Notification.create!(target: self, receiver: update_owner, sender: user, action: :posted)
 
     commentable.comments.includes(:user).map(&:user).uniq.each do |commenter|
       if commenter != update_owner && commenter != user
-        Notification.create!(target: self, receiver: commenter, sender: user)
+        Notification.create!(target: self, receiver: commenter, sender: user, action: :also_posted)
       end
     end
   end

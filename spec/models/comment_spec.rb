@@ -27,7 +27,7 @@ describe Comment do
         comment.save_and_notify
       end.to change(Notification, :count).by(1)
 
-      Notification.where(sender: sender, receiver: project_owner, target: comment).should_not be_empty
+      Notification.where(sender: sender, receiver: project_owner, target: comment, action: :commented).should_not be_empty
     end
 
     it "notifies other commenters" do
@@ -36,7 +36,7 @@ describe Comment do
 
       comment.save_and_notify
 
-      Notification.where(sender: sender, receiver: other_commenter, target: comment).should_not be_empty
+      Notification.where(sender: sender, receiver: other_commenter, target: comment, action: :also_commented).should_not be_empty
     end
 
     it "only sends notifications when the record is new" do

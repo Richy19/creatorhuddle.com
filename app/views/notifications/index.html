@@ -8,9 +8,9 @@
 
 <div class="container">
   <ul class="notifications">
-    <% @notifications.each do |notification| %>
+    <% notifications.each do |notification| %>
       <li class="notification">
-        <%= render 'notification', notification: notification %>
+        <%= notification.display %>
       </li>
     <% end %>
   </ul>

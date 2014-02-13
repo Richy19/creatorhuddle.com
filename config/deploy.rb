@@ -10,6 +10,9 @@ set :unicorn_pid, "#{fetch(:deploy_to)}/shared/tmp/pids/unicorn.pid"
 set :unicorn_default_pid, "#{fetch(:deploy_to)}/shared/tmp/pids/unicorn.pid"
 set :unicorn_roles, :app
 
+# make sure we use the right command for whenever setup
+SSHKit.config.command_map[:whenever] = "bundle exec whenever"
+
 # unicorn is not picking up the rbenv settings at the moment so we're manually adding them to the bundle command
 rbenv_prefix = "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :unicorn_bundle, "#{rbenv_prefix} bundle"

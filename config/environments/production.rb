@@ -59,7 +59,7 @@ CreatorhuddleCom::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w( email.css )
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -77,4 +77,10 @@ CreatorhuddleCom::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  default_url_options[:host] = 'creatorhuddle.com'
+
+  config.action_mailer.default_url_options = default_url_options
+  config.action_controller.asset_host = 'http://' + default_url_options[:host]
+  config.action_mailer.asset_host = config.action_controller.asset_host
 end

@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <%= stylesheet_link_tag 'email' %>
+  </head>
+  <body>
+    <table cellpadding="0" cellspacing="0" border="0" class="container-table" width="100%">
+      <tr>
+        <td height="30" class="outer-container-cell">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="outer-container-cell" align="center">
+          <table cellspacing="0" cellpadding="0" border="0" width="560" class="inner-container-table">
+            <tr>
+              <td colspan="3" height="30" class="header-container-cell"></td>
+            </tr>
+            <tr>
+              <td width="30" class="header-container-cell">&nbsp;</td>
+              <td width="500" class="header-container-cell header-content-cell">
+                <%= yield :header %>
+              </td>
+              <td width="30" class="header-container-cell">&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="3" height="30" class="header-container-cell"></td>
+            </tr>
+            <% if content_for?(:call_to_action_header) %>
+              <tr>
+                <td colspan="3" height="30" class="cta-container-cell"></td>
+              </tr>
+              <tr>
+                <td width="30" class="cta-container-cell">&nbsp;</td>
+                <td width="500" class="cta-container-cell cta-content-cell">
+                  <%= yield :call_to_action_header %>
+                </td>
+                <td width="30" class="cta-container-cell">&nbsp;</td>
+              </tr>
+              <tr>
+                <td colspan="3" height="30" class="cta-container-cell"></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td colspan="3" height="30" class="inner-container-cell">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="30" class="inner-container-cell">&nbsp;</td>
+              <td width="500" class="inner-container-cell content-cell">
+                <%= yield %>
+              </td>
+              <td width="30" class="inner-container-cell">&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="3" height="30" class="inner-container-cell">&nbsp;</td>
+            </tr>
+            <% if content_for?(:call_to_action_footer) %>
+              <tr>
+                <td colspan="3" height="30" class="cta-container-cell"></td>
+              </tr>
+              <tr>
+                <td width="30" class="cta-container-cell">&nbsp;</td>
+                <td width="500" class="cta-container-cell cta-content-cell">
+                  <%= yield :call_to_action_footer %>
+                </td>
+                <td width="30" class="cta-container-cell">&nbsp;</td>
+              </tr>
+              <tr>
+                <td colspan="3" height="30" class="cta-container-cell"></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td colspan="3" height="10" class="footer-spacing-cell">&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="3" class="footer-container-cell content-cell" align="right">
+                <span>sent on behalf of <a href="http://creatorhuddle.com">creatorhuddle.com</a>
+                <% if @unsubscribable %>
+                 - <a href="http://spoonfedstyle.com/unsubscribe?email=<%= @send_to %>">unsubscribe</a></span>
+                <% end %>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td height="30" class="outer-container-cell">&nbsp;</td>
+      </tr>
+    </table>
+  </body>
+</html>
