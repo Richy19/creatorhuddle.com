@@ -47,7 +47,7 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-md-7">
+      <div class="col-md-8">
         <div class="row">
           <div class="col-md-12 project-details">
             <h3 class="text-muted">Details:</h3>
@@ -73,7 +73,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-4">
         <h3 class="text-muted">Recent Updates:</h3>
         <% if user_signed_in? && current_user.can_manage?(project) %>
           <div class="small-post-update-form clearfix">
@@ -91,7 +91,7 @@
             <li id="update-<%= update.id %>" class="update project-update clearfix">
               <h4>Posted <%= time_ago_in_words(update.created_at) %> ago by <%= update.user.name %></h4>
               <div class="update-content">
-                <%= truncate update.content, length: 150 %> <%= link_to 'read more', update_path(update) %>
+                <%= truncate update.content_stripped, length: 150 %> <%= link_to 'read more', update_path(update) %>
               </div>
               <div class="update-meta">
                 <i class="fa fa-comments"></i> <%= link_to "#{update.comments.count} comments", update_path(update) %>
