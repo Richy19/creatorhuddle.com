@@ -58,7 +58,15 @@
       <ul class="comments">
         <% @decorated_update.comments.each do |comment| %>
           <li class="comment">
-            <h5><%= render 'users/avatar', user: comment.user %> <%= comment.user.name %> <span class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words comment.created_at %> ago</span></h5>
+            <h5>
+              <%= render 'users/avatar', user: comment.user %> <%= comment.user.name %>
+              <% if user_signed_in? && current_user.can_manage?(comment) %>
+                <span class="small-manage-controls comment-actions pull-right">
+                  <%= link_to edit_comment_path(comment), class: 'edit-comment' do %><i class="fa fa-pencil"></i><% end %>
+                  <%= link_to comment_path(comment), data: { confirm: 'Are you sure? Deleting this comment can not be undone!' }, method: :delete, class: 'delete-comment' do %><i class="fa fa-trash-o"></i><% end %>
+                </span>
+              <% end %>
+              <span class="pull-right text-muted"><i class="fa fa-clock-o"></i> <%= time_ago_in_words comment.created_at %> ago</span></h5>
             <%= comment.content %>
           </li>
         <% end %>

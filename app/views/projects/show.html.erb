@@ -49,8 +49,14 @@
     <div class="row">
       <div class="col-md-7">
         <div class="row">
+          <div class="col-md-12 project-details">
+            <h3 class="text-muted">Details:</h3>
+            <%= project.details %>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-md-6">
-            <h3>Project by:</h3>
+            <h3 class="text-muted">Project by:</h3>
             <ul class="users project-users">
               <% project.users.each do |user| %>
                 <li class="user project-user"><%= render 'users/avatar', user: user %> <%= link_to user.name, user_path(user) %></li>
@@ -59,18 +65,16 @@
           </div>
           <div class="col-md-6">
             <% unless project.homepage.blank? %>
-              <h3>Links:</h3>
+              <h3 class="text-muted">Links:</h3>
               <p>
                 <i class="fa fa-globe"></i> <a href="<%= project.homepage %>"><%= project.homepage %></a>
               </p>
             <% end %>
           </div>
         </div>
-        <h3>Details:</h3>
-        <%= project.details %>
       </div>
       <div class="col-md-5">
-        <h3>Recent Updates:</h3>
+        <h3 class="text-muted">Recent Updates:</h3>
         <% if user_signed_in? && current_user.can_manage?(project) %>
           <div class="small-post-update-form clearfix">
             <h4>Post an update:</h4>

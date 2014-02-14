@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.comment_attributes(resource_params)
+    if @comment.update_attributes(resource_params)
       redirect_to polymorphic_path(@comment.commentable)
     else
       respond_with(@comment) do |format|

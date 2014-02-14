@@ -1,8 +1,12 @@
 <%= simple_form_for [@project] do |f| %>
-  <%= f.input :name, as: :string %>
+  <%= f.input :name, as: :string, label: "What's your project called?" %>
   <%= f.input :homepage, as: :string %>
-  <%= f.input :summary, hint: 'give us a short summary of your project' %>
-  <%= f.input :details, hint: 'all the details!' %>
+  <%= f.input :summary, label: 'Give us a short summary of your project' %>
 
-  <%= f.submit class: 'btn btn-success' %>
+
+  <%= f.input :details, as: :pagedown, label: 'Now, tell us all about it! What are your goals? Why did you start the project?' %>
+
+  <div class="form-actions">
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
 <% end %>

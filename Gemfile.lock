@@ -182,6 +182,8 @@ GEM
       oauth2 (~> 0.9.3)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    pagedown-bootstrap-rails (2.0.0)
+      railties (> 3.1)
     paperclip (4.0.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -223,6 +225,7 @@ GEM
     rb-readline (0.5.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    redcarpet (3.1.0)
     redis (3.0.7)
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
@@ -347,6 +350,7 @@ DEPENDENCIES
   launchy
   omniauth
   omniauth-facebook
+  pagedown-bootstrap-rails
   paperclip
   paperclip-meta!
   pg
@@ -354,6 +358,7 @@ DEPENDENCIES
   premailer-rails
   rails (= 4.1.0.beta1)
   rb-readline
+  redcarpet
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc

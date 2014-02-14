@@ -5,7 +5,7 @@
   margin: 0;
 
   h1 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 50px;
     font-weight: bold;
 
@@ -16,6 +16,10 @@
     a {
       color: $brand-primary;
     }
+  }
+
+  p {
+    color: tint($brand-primary, 20%);
   }
 
   .nav-tabs {

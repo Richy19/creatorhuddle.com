@@ -31,6 +31,10 @@ gem 'whenever', require: false
 gem 'premailer-rails'
 gem 'sendgrid'
 
+# markdown!
+gem 'redcarpet'
+gem 'pagedown-bootstrap-rails'
+
 # sitemap generation
 gem 'big_sitemap'
 

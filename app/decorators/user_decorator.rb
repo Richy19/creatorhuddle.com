@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 # presentation related code for users
 class UserDecorator < Draper::Decorator
   delegate_all
@@ -13,5 +15,11 @@ class UserDecorator < Draper::Decorator
 
   def name
     h.link_to object.name, h.user_path(object)
+  end
+
+  def gravatar_url
+    email_address = object.email.downcase
+    hash = Digest::MD5.hexdigest(email_address)
+    "http://www.gravatar.com/avatar/#{hash}"
   end
 end
