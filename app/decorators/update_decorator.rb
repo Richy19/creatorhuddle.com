@@ -1,3 +1,5 @@
+require 'redcarpet/render_strip'
+
 class UpdateDecorator < Draper::Decorator
   delegate_all
   decorates_association :user

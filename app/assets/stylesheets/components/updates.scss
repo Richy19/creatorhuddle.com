@@ -46,3 +46,11 @@
     font-size: 12px;
   }
 }
+
+.updates-sm {
+  .update-content {
+    a {
+      color: $text-color;
+    }
+  }
+}

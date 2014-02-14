@@ -86,12 +86,12 @@
             <% end %>
           </div>
         <% end %>
-        <ul class="updates project-updates">
+        <ul class="updates updates-sm project-updates">
           <% updates.each do |update| %>
             <li id="update-<%= update.id %>" class="update project-update clearfix">
               <h4>Posted <%= time_ago_in_words(update.created_at) %> ago by <%= update.user.name %></h4>
               <div class="update-content">
-                <%= truncate update.content_stripped, length: 150 %> <%= link_to 'read more', update_path(update) %>
+                <%= link_to truncate(update.content_stripped, length: 150), update_path(update) %>
               </div>
               <div class="update-meta">
                 <i class="fa fa-comments"></i> <%= link_to "#{update.comments.count} comments", update_path(update) %>
