@@ -1,0 +1,28 @@
+.home {
+  #wrap {
+    height: 100%;
+  }
+
+  .home {
+    height: 100%;
+  }
+
+  .jumbotron {
+    height: 100%;
+    background: url(image-path('home-hero.jpg'));
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: #fff;
+
+    .container {
+      position: relative;
+      top: 50%;
+      margin-top: -100px;
+    }
+  }
+
+  .masthead {
+    height: 100%;
+  }
+}
