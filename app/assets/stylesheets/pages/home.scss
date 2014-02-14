@@ -20,6 +20,12 @@
       top: 50%;
       margin-top: -100px;
     }
+
+    p {
+      color: $gray;
+      font-weight: normal;
+      -webkit-font-smoothing: antialiased;
+    }
   }
 
   .masthead {
