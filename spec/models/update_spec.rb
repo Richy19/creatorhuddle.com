@@ -35,7 +35,7 @@ describe Update do
 
     it "assigns the correct action to the notification" do
       update.save_and_notify
-      Notification.last.action.should eq('posted_update')
+      Notification.last.action.should eq('posted')
     end
 
     it "assigns the correct target to the notification" do

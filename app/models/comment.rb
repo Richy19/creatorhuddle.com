@@ -14,6 +14,8 @@ class Comment < ActiveRecord::Base
         end
       end
     end
+
+    save
   end
 
   def notify_update_participants

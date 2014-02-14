@@ -4,9 +4,9 @@ feature 'Editing updates' do
   scenario "A user edits an updatethat they manage" do
     current_user = login create :user
     project = create :project, users: [current_user]
-    create :update, updateable: project, user: current_user
+    update = create :update, updateable: project, user: current_user
 
-    visit project_path(project)
+    visit update_path(update)
     first('.edit-update').click
 
     fill_in 'Content', with: 'new update content'
@@ -17,9 +17,11 @@ feature 'Editing updates' do
 
   scenario "A user edits an update that they can't manage" do
     login create :user
-    project = create :project
+    other_user = create :user
+    project = create :project, users: [other_user]
+    update = create :update, updateable: project, user: other_user
 
-    visit project_path(project)
+    visit update_path(update)
 
     page.should_not have_selector('.edit-update')
   end

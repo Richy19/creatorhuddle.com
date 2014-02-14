@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   include Cruddy::Controller
   respond_to :html, :json
 
-  decorates_assigned :project
+  decorates_assigned :project, :updates
 
   before_action :authenticate_user!, except: [:index, :show]
   before_action :load_resource_instance, only: [:show, :edit, :update, :destroy]
@@ -43,6 +43,7 @@ class ProjectsController < ApplicationController
 
   # redefining this to prevent loading the project twice
   def show
+    @updates = @project.updates.order(created_at: :desc).limit(5)
     respond_with @project
   end
 

@@ -18,10 +18,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if resource.save_and_notify
-      case @comment.commentable_type
-      when 'Update'
-        redirect_to project_path(@comment.commentable.updateable)
-      end
+      redirect_to polymorphic_path(@comment.commentable)
     else
       respond_with(resource) do |format|
         format.html { render :new }
@@ -32,18 +29,12 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
 
-    case @comment.commentable_type
-    when 'Update'
-      redirect_to project_path(@comment.commentable.updateable)
-    end
+    redirect_to polymorphic_path(@comment.commentable)
   end
 
-  def comment
+  def update
     if @comment.comment_attributes(resource_params)
-      case @comment.commentable_type
-      when 'Update'
-        redirect_to project_path(@comment.commentable.updateable)
-      end
+      redirect_to polymorphic_path(@comment.commentable)
     else
       respond_with(@comment) do |format|
         format.html { render :edit }

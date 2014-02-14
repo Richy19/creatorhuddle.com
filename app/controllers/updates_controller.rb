@@ -2,14 +2,19 @@
 class UpdatesController < ApplicationController
   include Cruddy::Controller
   respond_to :html, :json
-  actions :new, :create, :edit, :update, :destroy
+  actions :show, :new, :create, :edit, :update, :destroy
 
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :load_resource_instance, only: [:edit, :update, :destroy]
+  before_action :load_resource_instance, only: [:show, :edit, :update, :destroy]
   before_action :authorize_management!, only: [:edit, :update, :destroy]
+  before_action :decorate_update, only: [:show, :edit]
 
   def initialize_resource_instance(params = nil)
     current_user.updates.build(params)
+  end
+
+  def decorate_update
+    @decorated_update = @update.decorate
   end
 
   # create action
@@ -18,10 +23,7 @@ class UpdatesController < ApplicationController
     @update.user = current_user
 
     if resource.save_and_notify
-      case @update.updateable_type
-      when 'Project'
-        redirect_to project_path(@update.updateable)
-      end
+      redirect_to polymorphic_path(@update.updateable)
     else
       respond_with(resource) do |format|
         format.html { render :new }
@@ -32,18 +34,12 @@ class UpdatesController < ApplicationController
   def destroy
     @update.destroy
 
-    case @update.updateable_type
-    when 'Project'
-      redirect_to project_path(@update.updateable)
-    end
+    redirect_to polymorphic_path(@update.updateable)
   end
 
   def update
     if @update.update_attributes(resource_params)
-      case @update.updateable_type
-      when 'Project'
-        redirect_to project_path(@update.updateable)
-      end
+      redirect_to polymorphic_path(@update.updateable)
     else
       respond_with(@update) do |format|
         format.html { render :edit }

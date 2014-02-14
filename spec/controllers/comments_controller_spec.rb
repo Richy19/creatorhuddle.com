@@ -23,7 +23,7 @@ describe CommentsController do
 
         it "redirects to the update's project" do
           post :create, comment: comment_params
-          response.should redirect_to project_path(project)
+          response.should redirect_to update_path(update)
         end
 
         it 'creates a comment' do
