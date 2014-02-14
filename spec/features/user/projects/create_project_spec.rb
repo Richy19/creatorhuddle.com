@@ -8,10 +8,10 @@ feature "Creating projects" do
     click_link 'projects'
     click_link 'add'
 
-    fill_in 'Name', with: 'Project name'
-    fill_in 'Homepage', with: 'http://www.creatorhuddle.com'
-    fill_in 'Summary', with: 'summar'
-    fill_in 'Details', with: 'Blah blah blah times a bajillion'
+    fill_in 'project_name', with: 'Project name'
+    fill_in 'project_homepage', with: 'http://www.creatorhuddle.com'
+    fill_in 'project_summary', with: 'summar'
+    fill_in 'wmd-input-details', with: 'Blah blah blah times a bajillion'
     click_button 'Create Project'
 
     page.should have_selector('h1', text: 'Project name')

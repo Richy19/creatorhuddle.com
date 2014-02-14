@@ -10,7 +10,7 @@ feature "Editing projects" do
     first(:link, project.name).click
     click_link 'edit project'
 
-    fill_in 'Name', with: 'new project name'
+    fill_in 'project_name', with: 'new project name'
     click_button 'Update Project'
 
     page.should have_selector('h1', text: 'new project name')

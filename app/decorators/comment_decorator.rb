@@ -4,7 +4,11 @@ class CommentDecorator < Draper::Decorator
   decorates_association :user
 
   def content
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, space_after_headers: true)
-    markdown.render(object.content).html_safe
+    if object.content.blank?
+      ''
+    else
+      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, space_after_headers: true)
+      markdown.render(object.content).html_safe
+    end
   end
 end
