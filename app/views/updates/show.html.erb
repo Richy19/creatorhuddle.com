@@ -2,36 +2,28 @@
   <div class="masthead">
     <div class="jumbotron">
       <div class="container">
-        <h1 class="project-name">
+        <h1 class="project-name pull-left">
           <%= link_to @decorated_update.updateable.name, polymorphic_path(@decorated_update.updateable) %>
         </h1>
+        <div class="stats pull-right">
+          <span class="follow-count"><%= @decorated_update.updateable.followers.count %> followers</span>
+
+          <% if user_signed_in? && current_user.can_manage?(@decorated_update.updateable) %>
+            <%= link_to 'edit project', edit_project_path(@decorated_update.updateable), class: 'btn btn-primary' %>
+            <%= link_to 'delete project', project_path(@decorated_update.updateable), data: { confirm: 'Are you sure? Deleting this project can not be undone!' }, method: :delete, class: 'btn btn-primary' %>
+          <% end %>
+
+          <%= render 'shared/follow_button', followable: @decorated_update.updateable %>
+        </div>
+      </div>
+    </div>
+    <div class="breadcrumb-wrap">
+      <div class="container">
         <ol class="breadcrumb">
           <li><%= link_to @decorated_update.updateable.name, polymorphic_path(@decorated_update.updateable) %></li>
           <li><%= link_to 'updates', polymorphic_path([@decorated_update.updateable, :updates]) %></li>
           <li class="active">update from <%= time_ago_in_words(@decorated_update.created_at) %> ago</li>
         </ol>
-        <div class="stats">
-          <% if user_signed_in? %>
-            <% if current_user.can_manage?(@decorated_update.updateable) %>
-              <%= link_to 'edit project', edit_project_path(@decorated_update.updateable), class: 'btn btn-primary' %>
-              <%= link_to 'delete project', project_path(@decorated_update.updateable), data: { confirm: 'Are you sure? Deleting this project can not be undone!' }, method: :delete, class: 'btn btn-primary' %>
-            <% end %>
-            <% if current_user.follows?(@decorated_update.updateable) %>
-              <%= link_to follow_path(current_user.follow_for(@decorated_update.updateable)), method: :delete, class: 'btn btn-danger btn-unfollow' do %>
-                <i class="fa fa-times-circle-o"></i> unfollow
-              <% end %>
-            <% else %>
-              <%= simple_form_for Follow.new(followable: @decorated_update.updateable) do |f| %>
-                <%= f.input :followable_id, as: :hidden %>
-                <%= f.input :followable_type, as: :hidden %>
-                <button type="submit" class="btn btn-success btn-follow">
-                  <i class="fa fa-rss"></i> follow
-                </button>
-              <% end %>
-            <% end %>
-          <% end %>
-          <span class="follow-count"><%= @decorated_update.updateable.followers.count %> followers</span>
-        </div>
       </div>
     </div>
   </div>

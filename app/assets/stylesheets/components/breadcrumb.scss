@@ -1,4 +1,8 @@
 .breadcrumb {
+  padding: 0;
+  background: transparent;
+  margin: 0;
+
   & > .active {
     color: $gray-darker;
   }
@@ -12,6 +16,12 @@
   }
 
   a {
-    color: $brand-primary;
+    // color: $brand-success;
   }
+}
+
+
+.breadcrumb-wrap {
+  background: $gray-lighter;
+  padding: 10px 0;
 }

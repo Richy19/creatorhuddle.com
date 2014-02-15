@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+  <% if current_user.follows?(followable) %>
+    <%= link_to follow_path(current_user.follow_for(followable)), method: :delete, class: 'btn btn-default btn-unfollow' do %>
+      <i class="fa fa-times-circle-o"></i> unfollow
+    <% end %>
+  <% else %>
+    <%= simple_form_for Follow.new(followable: followable) do |f| %>
+      <%= f.input :followable_id, as: :hidden %>
+      <%= f.input :followable_type, as: :hidden %>
+      <button type="submit" class="btn btn-success btn-follow">
+        <i class="fa fa-rss"></i> follow
+      </button>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= simple_form_for Follow.new(followable: followable) do |f| %>
+    <%= f.input :followable_id, as: :hidden %>
+    <%= f.input :followable_type, as: :hidden %>
+    <button type="submit" class="btn btn-success btn-follow">
+      <i class="fa fa-rss"></i> follow
+    </button>
+  <% end %>
+<% end %>
