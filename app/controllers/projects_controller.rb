@@ -8,30 +8,6 @@ class ProjectsController < ApplicationController
   before_action :load_resource_instance, only: [:show, :edit, :update, :destroy]
   before_action :authorize_management!, only: [:edit, :update, :destroy]
 
-  before_action :mark_notifications_as_read, only: [:show]
-
-  def mark_notifications_as_read
-    if user_signed_in?
-      # this might be expensive when there are lots of updates
-      # so let's make sure they have notifications
-      if current_user.notifications.unread.any?
-        @project.updates.find_each do |update|
-          current_user.notifications.where(target_id: update.id).find_each do |notification|
-            notification.read = true
-            notification.save
-          end
-
-          update.comments.find_each do |comment|
-            current_user.notifications.where(target_id: comment.id).find_each do |notification|
-              notification.read = true
-              notification.save
-            end
-          end
-        end
-      end
-    end
-  end
-
   def get_resource_collection
     if params[:show] == 'followed'
       authenticate_user!
