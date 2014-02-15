@@ -17,6 +17,14 @@
         </div>
       </div>
     </div>
+    <div class="breadcrumb-wrap">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li><%= link_to @project.name, polymorphic_path(@project) %></li>
+          <li class="active">updates</li>
+        </ol>
+      </div>
+    </div>
   </div>
 
   <div class="container">
