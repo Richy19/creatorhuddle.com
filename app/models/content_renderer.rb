@@ -18,6 +18,7 @@ class ContentRenderer
           youtube width: 400, height: 250
           vimeo width: 400, height: 250
           soundcloud theme_color: '2F3841', color: '92CCBC', show_artwork: true
+          gist
         end
       end
 
