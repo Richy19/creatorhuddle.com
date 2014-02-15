@@ -1,11 +1,12 @@
 <div class="project">
   <div class="masthead">
     <div class="jumbotron">
-      <div class="container">
-        <h1 class="project-name">
+      <div class="container clearfix">
+        <h1 class="project-name pull-left">
           <%= project.name %>
         </h1>
-        <div class="stats">
+        <div class="stats pull-right">
+          <span class="follow-count"><%= project.followers.count %> followers</span>
           <% if user_signed_in? %>
             <% if current_user.can_manage?(project) %>
               <%= link_to 'edit project', edit_project_path(project), class: 'btn btn-primary' %>
@@ -33,7 +34,6 @@
               </button>
             <% end %>
           <% end %>
-          <span class="follow-count"><%= project.followers.count %> followers</span>
         </div>
       </div>
     </div>
