@@ -30,7 +30,7 @@
               <% current_user.projects.order(name: :desc).each do |project| %>
                 <li class="project">
                   <h4><%= link_to project.name, project_path(project) %></h4>
-                  <p><%= project.summary %></p>
+                  <%= project.summary %>
                 </li>
               <% end %>
             </ul>
