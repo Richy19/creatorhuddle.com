@@ -1,4 +1,4 @@
-
+# this class handles santizing content
 class ContentRenderer
   include AutoHtml
 
@@ -12,10 +12,13 @@ class ContentRenderer
       ''
     else
       rendered_content = Sanitize.clean(@content, Sanitize::Config::RESTRICTED)
-      rendered_content = auto_html(rendered_content) do
-        youtube width: 400, height: 250
-        vimeo width: 400, height: 250
-        soundcloud theme_color: 'ffffff', color: '2F3841', show_artwork: true
+
+      unless @strip
+        rendered_content = auto_html(rendered_content) do
+          youtube width: 400, height: 250
+          vimeo width: 400, height: 250
+          soundcloud theme_color: '2F3841', color: '92CCBC', show_artwork: true
+        end
       end
 
       markdown = Redcarpet::Markdown.new(get_markdown_renderer, autolink: true, space_after_headers: true)
