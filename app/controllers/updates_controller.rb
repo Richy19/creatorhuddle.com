@@ -2,20 +2,13 @@
 class UpdatesController < ApplicationController
   include Cruddy::Controller
   respond_to :html, :json
-  actions :show, :new, :create, :edit, :update, :destroy
 
   before_action :authenticate_user!, except: [:index, :show]
   before_action :load_resource_instance, only: [:show, :edit, :update, :destroy]
   before_action :authorize_management!, only: [:edit, :update, :destroy]
   before_action :decorate_update, only: [:show, :edit]
 
-  def initialize_resource_instance(params = nil)
-    current_user.updates.build(params)
-  end
-
-  def decorate_update
-    @decorated_update = @update.decorate
-  end
+  decorates_assigned :updates
 
   # create action
   def create
@@ -48,6 +41,19 @@ class UpdatesController < ApplicationController
   end
 
   protected
+
+  def get_resource_collection
+    @project = Project.where(id: params[:project_id]).first || not_found
+    @updates = @project.updates
+  end
+
+  def initialize_resource_instance(params = nil)
+    current_user.updates.build(params)
+  end
+
+  def decorate_update
+    @decorated_update = @update.decorate
+  end
 
   def resource_params
     params.require(:update).permit(:content, :updateable_id, :updateable_type)

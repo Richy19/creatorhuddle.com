@@ -11,7 +11,9 @@ CreatorhuddleCom::Application.routes.draw do
 
   resources :updates
   resources :users, param: :username
-  resources :projects
+  resources :projects do
+    resources :updates
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

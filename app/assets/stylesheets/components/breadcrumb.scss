@@ -1,0 +1,17 @@
+.breadcrumb {
+  & > .active {
+    color: $gray-darker;
+  }
+
+  & > li + li:before {
+    content: "/\00a0";
+    padding: 0 5px;
+    color: $gray;
+    font-weight: normal;
+    font-size: 10px;
+  }
+
+  a {
+    color: $brand-primary;
+  }
+}

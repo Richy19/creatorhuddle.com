@@ -74,7 +74,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <h3 class="text-muted">Recent Updates:</h3>
+        <h3 class="text-muted">Recent Updates: <small class="pull-right"><%= link_to 'view all', project_updates_path(project) %></small></h3>
         <% if user_signed_in? && current_user.can_manage?(project) %>
           <div class="small-post-update-form clearfix">
             <h4>Post an update:</h4>

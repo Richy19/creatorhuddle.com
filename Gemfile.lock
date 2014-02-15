@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/arehberg/auto_html.git
+  revision: bf64532b529625176bbb0d86b221461434e849c8
+  specs:
+    auto_html (1.6.1)
+      redcarpet (~> 3.1)
+      rinku (~> 1.5.0)
+
+GIT
   remote: git://github.com/y8/paperclip-meta.git
   revision: 321f437f36696d539db1a1853efc0e8e08539b44
   ref: 321f437f36696d539db1a1853efc0e8e08539b44
@@ -231,6 +239,7 @@ GEM
       redis (~> 3.0.4)
     ref (1.0.5)
     request_store (1.0.5)
+    rinku (1.5.1)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -248,6 +257,8 @@ GEM
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     ruby-progressbar (1.4.1)
+    sanitize (2.1.0)
+      nokogiri (>= 1.4.4)
     sass (3.2.14)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -324,6 +335,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  auto_html!
   awesome_nested_set (~> 3.0.0.rc.3)
   aws-sdk
   better_errors
@@ -360,6 +372,7 @@ DEPENDENCIES
   rb-readline
   redcarpet
   rspec-rails
+  sanitize
   sass-rails (~> 4.0.0)
   sdoc
   sendgrid

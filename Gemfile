@@ -31,8 +31,10 @@ gem 'whenever', require: false
 gem 'premailer-rails'
 gem 'sendgrid'
 
-# markdown!
+# markdown and other content stuff
 gem 'redcarpet'
+gem 'auto_html', github: 'arehberg/auto_html'
+gem 'sanitize'
 gem 'pagedown-bootstrap-rails'
 
 # sitemap generation
