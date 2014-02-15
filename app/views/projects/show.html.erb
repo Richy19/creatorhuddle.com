@@ -50,6 +50,33 @@
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-12 project-details">
+            <div class="well">
+              <h3 class="text-muted">Recent Updates: <small class="pull-right"><%= link_to 'view all', project_updates_path(project), class: 'btn btn-info btn-sm' %></small></h3>
+              <% if updates.any? %>
+                <% updates.each_with_index do |update, i| %>
+                  <% if i % 2 == 0 %>
+                    <div class="updates updates-sm project-updates row">
+                  <% end %>
+
+                  <div id="update-<%= update.id %>" class="update project-update clearfix col-md-6">
+                    <h4>Posted <%= time_ago_in_words(update.created_at) %> ago by <%= update.user.name %></h4>
+                    <div class="update-content">
+                      <%= link_to truncate(update.content_stripped, length: 150), update_path(update) %>
+                    </div>
+                    <div class="update-meta">
+                      <i class="fa fa-comments"></i> <%= link_to "#{update.comments.count} comments", update_path(update) %>
+                    </div>
+                  </div>
+
+                  <% if i % 2 == 1 || (update == updates.last && updates.count % 2 == 1) %>
+                    </div>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <em>No updates have been posted yet</em>
+              <% end %>
+            </div>
+
             <h3 class="text-muted">Details:</h3>
             <%= project.details %>
           </div>
@@ -74,7 +101,6 @@
         </div>
       </div>
       <div class="col-md-4">
-        <h3 class="text-muted">Recent Updates: <small class="pull-right"><%= link_to 'view all', project_updates_path(project) %></small></h3>
         <% if user_signed_in? && current_user.can_manage?(project) %>
           <div class="small-post-update-form clearfix">
             <h4>Post an update:</h4>
@@ -86,20 +112,6 @@
             <% end %>
           </div>
         <% end %>
-        <ul class="updates updates-sm project-updates">
-          <% updates.each do |update| %>
-            <li id="update-<%= update.id %>" class="update project-update clearfix">
-              <h4>Posted <%= time_ago_in_words(update.created_at) %> ago by <%= update.user.name %></h4>
-              <div class="update-content">
-                <%= link_to truncate(update.content_stripped, length: 150), update_path(update) %>
-              </div>
-              <div class="update-meta">
-                <i class="fa fa-comments"></i> <%= link_to "#{update.comments.count} comments", update_path(update) %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-
         <h4>Followers:</h4>
         <ul class="users project-users">
           <% project.followers.first(20).each do |user| %>

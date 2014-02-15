@@ -2,7 +2,7 @@
   margin: 0 0 30px 0;
 
   h4 {
-    border-bottom: 1px solid $gray-lighter;
+    border-bottom: 1px dashed $gray-lighter;
     padding: 0 0 10px 0;
     font-size: 24px;
     color: darken($gray-darker, 20%);
@@ -30,7 +30,7 @@
     margin: 0 0 30px 0;
 
     h4 {
-      border-bottom: 1px solid $gray-lighter;
+      border-bottom: 1px dashed $gray-lighter;
       padding: 0 0 10px 0;
       font-size: 14px;
       color: darken($gray-darker, 20%);
@@ -52,7 +52,8 @@
     margin: 0 0 20px 0;
 
     h4 {
-      padding: 0 0 5px 0;
+      padding: 0 0 7px 0;
+      margin-bottom: 7px;
       font-size: 14px;
     }
   }
@@ -69,4 +70,8 @@
   .update-meta {
     font-size: 12px;
   }
+}
+
+.well .update h4 {
+  border-bottom-color: $gray-light;
 }

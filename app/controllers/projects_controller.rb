@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
 
   # redefining this to prevent loading the project twice
   def show
-    @updates = @project.updates.order(created_at: :desc).limit(5)
+    @updates = @project.updates.order(created_at: :desc).limit(4)
     respond_with @project
   end
 
