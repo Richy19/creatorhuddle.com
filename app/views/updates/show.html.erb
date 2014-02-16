@@ -20,8 +20,9 @@
     <div class="breadcrumb-wrap">
       <div class="container">
         <ol class="breadcrumb">
+          <li><%= link_to 'Projects', projects_path %></li>
           <li><%= link_to @decorated_update.updateable.name, polymorphic_path(@decorated_update.updateable) %></li>
-          <li><%= link_to 'updates', polymorphic_path([@decorated_update.updateable, :updates]) %></li>
+          <li><%= link_to 'Updates', polymorphic_path([@decorated_update.updateable, :updates]) %></li>
           <li class="active">update from <%= time_ago_in_words(@decorated_update.created_at) %> ago</li>
         </ol>
       </div>

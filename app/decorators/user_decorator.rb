@@ -14,7 +14,7 @@ class UserDecorator < Draper::Decorator
   #   end
 
   def name
-    h.link_to object.name, h.user_path(object)
+    h.link_to object.name, h.user_url(object)
   end
 
   def gravatar_url
