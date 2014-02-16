@@ -20,10 +20,12 @@ class ContentRenderer
           soundcloud theme_color: '2F3841', color: '92CCBC', show_artwork: true
           gist
         end
+
+        markdown = Redcarpet::Markdown.new(get_markdown_renderer, autolink: true, space_after_headers: true)
+        rendered_content = markdown.render(rendered_content).html_safe
       end
 
-      markdown = Redcarpet::Markdown.new(get_markdown_renderer, autolink: true, space_after_headers: true)
-      markdown.render(rendered_content).html_safe
+      rendered_content
     end
   end
 
