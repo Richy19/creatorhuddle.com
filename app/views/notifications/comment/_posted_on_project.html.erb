@@ -1,0 +1,6 @@
+<%
+  project = notification.target.commentable
+  sender = notification.sender
+%>
+
+<%= sender.decorate.name %> commented on <%= link_to project.name, project_url(project) %>

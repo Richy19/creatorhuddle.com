@@ -1,7 +1,5 @@
 <%
-  update = notification.target.commentable
-  sender = notification.sender
-  project = update.updateable
+  commentable_type = notification.target.commentable_type.underscore
+  partial = "notifications/comment/#{notification.action}_on_#{commentable_type}"
 %>
-
-<%= sender.decorate.name %> also commented on an <%= link_to 'update', update_url(update) %> on <%= link_to project.name, project_url(project) %>
+<%= render partial, notification: notification %>

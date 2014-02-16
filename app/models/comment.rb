@@ -3,28 +3,35 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, polymorphic: true
   acts_as_nested_set dependent: :destroy
 
+  default_scope { order(created_at: :asc) }
+
   def save_and_notify
     if new_record?
       if parent
         # notify the person who posted the parent comment
       else
-        case commentable
-        when Update
-          notify_update_participants
-        end
+        notify_participants
       end
     end
 
     save
   end
 
-  def notify_update_participants
-    update_owner = commentable.user
+  def notify_participants
+    if commentable.respond_to?(:user)
+      original_owners = [commentable.user]
+    elsif commentable.respond_to?(:users)
+      original_owners = commentable.users
+    else
+      original_owners = []
+    end
 
-    Notification.create!(target: self, receiver: update_owner, sender: user, action: :posted) if update_owner != user
+    original_owners.each do |original_owner|
+      Notification.create!(target: self, receiver: original_owner, sender: user, action: :posted) unless original_owner == user
+    end
 
     commentable.comments.includes(:user).map(&:user).uniq.each do |commenter|
-      if commenter != update_owner && commenter != user
+      if !original_owners.include?(commenter) && commenter != user
         Notification.create!(target: self, receiver: commenter, sender: user, action: :also_posted)
       end
     end

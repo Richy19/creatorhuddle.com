@@ -4,6 +4,7 @@ class ProjectDecorator < Draper::Decorator
   decorates_association :users
   decorates_association :followers
   decorates_association :updates
+  decorates_association :comments
 
   def details
     ContentRenderer.new(object.details).render

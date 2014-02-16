@@ -36,39 +36,16 @@
         <%= link_to update_path(@decorated_update), data: { confirm: 'Are you sure? Deleting this update can not be undone!' }, method: :delete, class: 'delete-update' do %><i class="fa fa-trash-o"></i><% end %>
       </div>
     <% end %>
+
     <h4>Posted <%= time_ago_in_words(@decorated_update.created_at) %> ago by <%= @decorated_update.user.name %></h4>
     <div class="update-content">
       <%= @decorated_update.content %>
     </div>
-    <div class="update-footer">
-      <i class="fa fa-comments"></i> <%= @decorated_update.comments.count %> comments.
-      <button type="button" class="btn btn-plain" data-toggle="collapse" data-target="#post-comment-update-<%= @decorated_update.id %>">Share your thoughts</button>
-      <div class="post-comment collapse clearfix" id="post-comment-update-<%= @decorated_update.id %>">
-        <%= simple_form_for Comment.new(user: current_user, commentable: @decorated_update) do |f| %>
-          <%= f.input :commentable_id, as: :hidden %>
-          <%= f.input :commentable_type, as: :hidden %>
-          <%= f.input :content, label: false %>
-          <%= f.submit 'post comment', class: 'btn btn-success pull-right submit-comment' %>
-        <% end %>
-      </div>
-    </div>
+
+    <%= render 'comments/bar', commentable: @decorated_update %>
+
     <div class="update-comments">
-      <ul class="comments">
-        <% @decorated_update.comments.each do |comment| %>
-          <li class="comment">
-            <h5>
-              <%= render 'users/avatar', user: comment.user %> <%= comment.user.name %>
-              <% if user_signed_in? && current_user.can_manage?(comment) %>
-                <span class="small-manage-controls comment-actions pull-right">
-                  <%= link_to edit_comment_path(comment), class: 'edit-comment' do %><i class="fa fa-pencil"></i><% end %>
-                  <%= link_to comment_path(comment), data: { confirm: 'Are you sure? Deleting this comment can not be undone!' }, method: :delete, class: 'delete-comment' do %><i class="fa fa-trash-o"></i><% end %>
-                </span>
-              <% end %>
-              <span class="pull-right text-muted"><i class="fa fa-clock-o"></i> <%= time_ago_in_words comment.created_at %> ago</span></h5>
-            <%= comment.content %>
-          </li>
-        <% end %>
-      </ul>
+      <%= render 'comments/list', commentable: @decorated_update %>
     </div>
   </div>
 </div>

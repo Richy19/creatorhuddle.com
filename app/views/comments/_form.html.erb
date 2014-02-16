@@ -1,5 +1,7 @@
 <%= simple_form_for comment do |f| %>
-  <%= f.input :content %>
+  <%= f.input :commentable_id, as: :hidden %>
+  <%= f.input :commentable_type, as: :hidden %>
+  <%= f.input :content, as: :pagedown %>
 
   <%= f.submit 'Save', class: 'btn btn-success' %>
 <% end %>

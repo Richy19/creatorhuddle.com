@@ -1,0 +1,7 @@
+<div class="well">
+  <i class="fa fa-comments"></i> <%= commentable.comments.count %> comments.
+  <button type="button" class="btn btn-plain" data-toggle="collapse" data-target="#post-comment-<%= commentable.class %>-<%= commentable.id %>">Share your thoughts</button>
+  <div class="post-comment collapse clearfix" id="post-comment-<%= commentable.class %>-<%= commentable.id %>">
+    <%= render 'comments/inline_form', commentable: commentable %>
+  </div>
+</div>

@@ -61,21 +61,12 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
-            <h3 class="text-muted">Project by:</h3>
-            <ul class="users project-users">
-              <% project.users.each do |user| %>
-                <li class="user project-user"><%= render 'users/avatar', user: user %> <%= link_to user.name, user_path(user) %></li>
-              <% end %>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <% unless project.homepage.blank? %>
-              <h3 class="text-muted">Links:</h3>
-              <p>
-                <i class="fa fa-globe"></i> <a href="<%= project.homepage %>"><%= project.homepage %></a>
-              </p>
-            <% end %>
+          <div class="col-md-12">
+            <%= render 'comments/bar', commentable: project %>
+
+            <div class="project-comments">
+              <%= render 'comments/list', commentable: project %>
+            </div>
           </div>
         </div>
       </div>
@@ -94,7 +85,22 @@
             <% end %>
           </div>
         <% end %>
-        <h4>Followers:</h4>
+
+        <h3 class="text-muted">Project by:</h3>
+        <ul class="users project-users">
+          <% project.users.each do |user| %>
+            <li class="user project-user"><%= render 'users/avatar', user: user %> <%= link_to user.name, user_path(user) %></li>
+          <% end %>
+        </ul>
+
+        <% unless project.homepage.blank? %>
+          <h3 class="text-muted">Links:</h3>
+          <p>
+            <i class="fa fa-globe"></i> <a href="<%= project.homepage %>"><%= project.homepage %></a>
+          </p>
+        <% end %>
+
+        <h3 class="text-muted">Followers:</h4>
         <ul class="users project-users">
           <% project.followers.first(20).each do |user| %>
             <li class="user project-user"><%= render 'users/avatar', user: user %> <%= link_to user.name, user_path(user) %></li>
