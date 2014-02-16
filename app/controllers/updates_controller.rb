@@ -89,8 +89,11 @@ class UpdatesController < ApplicationController
     @updates = @project.updates
   end
 
-  def initialize_resource_instance(params = nil)
-    current_user.updates.build(params)
+  def initialize_resource_instance(args = nil)
+    update = current_user.updates.build(args)
+    update.updateable_id = params[:updateable_id] unless params[:updateable_id].blank?
+    update.updateable_type = params[:updateable_type] unless params[:updateable_type].blank?
+    update
   end
 
   def decorate_update

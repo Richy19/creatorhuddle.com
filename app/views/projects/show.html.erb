@@ -83,11 +83,14 @@
         <% if user_signed_in? && current_user.can_manage?(project) %>
           <div class="small-post-update-form clearfix">
             <h4>Post an update:</h4>
-            <%= simple_form_for Update.new(user: current_user, updateable: project) do |f| %>
+            <%= simple_form_for @new_update do |f| %>
               <%= f.input :content, label: false %>
               <%= f.input :updateable_id, as: :hidden, value: project.id %>
               <%= f.input :updateable_type, as: :hidden, value: project.class.to_s %>
-              <%= f.submit 'post update', class: 'btn btn-success pull-right' %>
+              <div class="pull-right">
+                <a href="<%= new_update_path(updateable_id: @new_update.updateable_id, updateable_type: @new_update.updateable_type) %>" class="btn btn-info">use full editor</a>
+                <%= f.submit 'post update', class: 'btn btn-success' %>
+              </div>
             <% end %>
           </div>
         <% end %>

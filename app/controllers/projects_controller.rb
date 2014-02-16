@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
   # redefining this to prevent loading the project twice
   def show
     @updates = @project.updates.order(created_at: :desc).limit(4)
+    @new_update = Update.new(user: current_user, updateable: @project)
     respond_with @project
   end
 
