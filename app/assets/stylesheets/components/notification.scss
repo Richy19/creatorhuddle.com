@@ -6,9 +6,31 @@
     border-bottom: 1px dashed $gray-light;
     padding: 0 0 10px 0;
     margin: 0 0 10px 0;
+    opacity: 0.5;
+
+    &.unread {
+      font-weight: normal;
+      opacity: 1;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    @include transition-property(opacity);
+    @include transition-duration(0.15s);
   }
 }
 
 .notification-time {
   font-size: 12px;
+}
+
+.unread-notification-icon {
+  @extend .fa;
+  @extend .fa-asterisk;
+
+  margin-right: 3px;
+
+  color: $brand-success;
 }

@@ -9,7 +9,10 @@
 <div class="container">
   <ul class="notifications">
     <% notifications.each do |notification| %>
-      <li class="notification">
+      <li class="notification <%= 'unread' unless notification.read? %>">
+        <% unless notification.read? %>
+          <i class="unread-notification-icon"></i>
+        <% end %>
         <%= notification.display %>
       </li>
     <% end %>

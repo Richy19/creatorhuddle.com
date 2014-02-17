@@ -84,19 +84,19 @@ $btn-link-disabled-color:        $gray-light;
 // Form states and alerts
 // -------------------------
 
-$state-success-text:             #fff;
+$state-success-text:             $brand-success;
 $state-success-bg:               $brand-success;
 $state-success-border:           $state-success-bg;
 
-$state-info-text:                #fff;
+$state-info-text:                $brand-info;
 $state-info-bg:                  $brand-info;
 $state-info-border:              $state-info-bg;
 
-$state-warning-text:             #fff;
+$state-warning-text:             $brand-warning;
 $state-warning-bg:               $brand-warning;
 $state-warning-border:           $state-warning-bg;
 
-$state-danger-text:              #fff;
+$state-danger-text:              $brand-danger;
 $state-danger-bg:                $brand-danger;
 $state-danger-border:            $state-danger-bg;
 
