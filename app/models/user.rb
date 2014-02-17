@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :projects, through: :user_projects
 
   has_many :comments
+  has_many :articles
   has_many :updates
   has_many :follows
 

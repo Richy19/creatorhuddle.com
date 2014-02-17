@@ -1,0 +1,40 @@
+<header class="masthead">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Articles</h1>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 article-list">
+      <%= render 'list', articles: @articles %>
+    </div>
+    <div class="col-sm-4">
+      <div class="your-articles well">
+        <div class="articles-actions pull-right">
+          <%= link_to new_article_path, class: 'btn btn-success' do %>
+            add <i class="fa fa-plus"></i>
+          <% end %>
+        </div>
+        <h3>Your Articles</h3>
+
+        <div class="your-articles-list-wrapper">
+          <% if user_signed_in? && current_user.articles.any? %>
+            <ul class="articles">
+              <% current_user.articles.order(name: :desc).each do |article| %>
+                <li class="article">
+                  <h4><%= link_to article.name, article_path(article) %></h4>
+                  <%= truncate article.content, length: 150 %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <em>No articles found</em>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

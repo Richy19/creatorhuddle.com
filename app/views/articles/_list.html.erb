@@ -1,0 +1,14 @@
+<% if articles.any? %>
+  <ul class="articles">
+    <% articles.each do |article| %>
+      <li class="article">
+        <%= link_to article_path(article) do %>
+          <h3><%= article.name %></h3>
+        <% end %>
+        <p><%= truncate article.content, length: 150 %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <em>No articles found</em>
+<% end %>

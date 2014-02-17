@@ -1,0 +1,43 @@
+<div class="article">
+  <div class="masthead">
+    <div class="jumbotron">
+      <div class="container clearfix">
+        <h1 class="article-name pull-left">
+          <%= article.name %>
+        </h1>
+        <div class="stats pull-right">
+          <% if user_signed_in? && current_user.can_manage?(article) %>
+            <%= link_to 'edit article', edit_article_path(article), class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12 article-details">
+            <%= article.content %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= render 'comments/bar', commentable: article %>
+
+            <div class="article-comments">
+              <%= render 'comments/list', commentable: article %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3 class="text-muted">Written by:</h3>
+        <ul class="users article-users">
+          <li class="user article-user"><%= render 'users/avatar', user: article.user %> <%= link_to article.user.name, user_path(article.user) %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
