@@ -1,9 +1,11 @@
 class Comment < ActiveRecord::Base
+  acts_as_nested_set dependent: :destroy
+  default_scope { order(created_at: :asc) }
+
   belongs_to :user
   belongs_to :commentable, polymorphic: true
-  acts_as_nested_set dependent: :destroy
 
-  default_scope { order(created_at: :asc) }
+  has_many :notifications, as: :target, class_name: 'Notification', dependent: :destroy
 
   def save_and_notify
     if new_record?

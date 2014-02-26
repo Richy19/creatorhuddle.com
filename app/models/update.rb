@@ -5,8 +5,9 @@ class Update < ActiveRecord::Base
   belongs_to :updateable, polymorphic: true, touch: true
   belongs_to :user
 
-  validates :user, presence: true
+  has_many :notifications, as: :target, class_name: 'Notification', dependent: :destroy
 
+  validates :user, presence: true
   validate :user_can_manage_updateable
 
   def user_can_manage_updateable
