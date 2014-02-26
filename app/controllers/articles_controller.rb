@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
   before_action :mark_notifications_as_read, only: [:show]
 
   def get_resource_collection
-    Article.order(created_at: :desc)
+    Article.published.order(created_at: :desc)
   end
 
   def mark_notifications_as_read

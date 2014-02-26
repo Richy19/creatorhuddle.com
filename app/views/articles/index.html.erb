@@ -24,8 +24,11 @@
             <ul class="articles">
               <% current_user.articles.order(name: :desc).each do |article| %>
                 <li class="article">
+                  <% unless article.published?  %>
+                    <div class="label label-danger pull-right">unpublished</div>
+                  <% end %>
                   <h4><%= link_to article.name, article_path(article) %></h4>
-                  <%= truncate article.content, length: 150 %>
+                  <p><%= truncate article.content, length: 150 %></p>
                 </li>
               <% end %>
             </ul>

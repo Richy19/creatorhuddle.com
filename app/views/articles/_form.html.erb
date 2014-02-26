@@ -1,5 +1,7 @@
 <%= simple_form_for [@article] do |f| %>
   <%= f.input :name, as: :string, label: "Title" %>
+  <%= f.input :published, label: "Is this article ready to be seen by the world?" %>
+
   <%= f.input :content, as: :pagedown %>
 
   <div class="form-actions">
