@@ -23,10 +23,8 @@ class User < ActiveRecord::Base
     case object
     when Project
       return can_manage_project?(object)
-    when Update
-      return can_manage_update?(object)
-    when Comment
-      return can_manage_update?(object)
+    else
+      return object.user_id == id
     end
 
     false
@@ -50,14 +48,6 @@ class User < ActiveRecord::Base
 
   def can_manage_project?(project)
     UserProject.where(user_id: id, project_id: project.id).any?
-  end
-
-  def can_manage_update?(update)
-    update.user_id == id
-  end
-
-  def can_manage_comment?(comment)
-    comment.user_id == id
   end
 
   def name
