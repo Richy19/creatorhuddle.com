@@ -8,7 +8,7 @@
       <%= f.hidden_field :ratable_id %>
       <%= f.hidden_field :ratable_type %>
 
-      <%= f.button disabled: current_user.has_rated?(link.object) do %>
+      <%= f.button disabled: !user_signed_in? || current_user.has_rated?(link.object) do %>
         <i class="fa fa-arrow-up"></i>
       <% end %>
     <% end %>
