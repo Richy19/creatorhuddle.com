@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226233331) do
+ActiveRecord::Schema.define(version: 20140301214749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 20140226233331) do
   add_index "follows", ["followable_type"], name: "index_follows_on_followable_type", using: :btree
   add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
 
+  create_table "links", force: true do |t|
+    t.integer  "user_id",                null: false
+    t.text     "url",                    null: false
+    t.text     "name",                   null: false
+    t.integer  "score",        limit: 8, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "rating_score", limit: 8, null: false
+  end
+
   create_table "notifications", force: true do |t|
     t.integer  "receiver_id"
     t.integer  "sender_id"
@@ -86,6 +96,19 @@ ActiveRecord::Schema.define(version: 20140226233331) do
 
   add_index "projects", ["name"], name: "index_projects_on_name", using: :btree
   add_index "projects", ["summary"], name: "index_projects_on_summary", using: :btree
+
+  create_table "ratings", force: true do |t|
+    t.integer  "user_id"
+    t.boolean  "positive"
+    t.integer  "ratable_id"
+    t.string   "ratable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["positive"], name: "index_ratings_on_positive", using: :btree
+  add_index "ratings", ["ratable_type", "ratable_id"], name: "index_ratings_on_ratable_type_and_ratable_id", using: :btree
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
 
   create_table "updates", force: true do |t|
     t.integer  "updateable_id"

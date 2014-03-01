@@ -1,0 +1,30 @@
+<header class="masthead">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Links</h1>
+
+      <ul class="nav nav-tabs">
+        <li <%= 'class="active"'.html_safe if params[:show].nil? %>><%= link_to 'hot', links_path %></li>
+        <li <%= 'class="active"'.html_safe if params[:show] == 'top' %>><%= link_to 'top', links_path(show: 'top') %></li>
+        <li <%= 'class="active"'.html_safe if params[:show] == 'new' %>><%= link_to 'new', links_path(show: 'new') %></li>
+        <li <%= 'class="active"'.html_safe if params[:show] == 'yours' %>><%= link_to 'your links', links_path(show: 'yours') %></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 link-list">
+      <%= render 'list', links: links %>
+
+      <%= pagination @links %>
+    </div>
+    <div class="col-sm-4">
+      <div class="submit-link well clearfix">
+        <h3>Submit a link</h3>
+        <%= render 'form', link: @new_link %>
+      </div>
+    </div>
+  </div>
+</div>

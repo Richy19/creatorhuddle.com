@@ -1,0 +1,48 @@
+.rate-link {
+  margin: 0 10px 0 0;
+
+  button {
+    margin: 0;
+    padding: 0;
+
+    background: 0;
+    border: 0;
+
+    @include transition-property(color);
+    @include transition-duration(0.3s);
+
+    &:hover {
+      color: $brand-success;
+    }
+
+    &:disabled {
+      color: $brand-success;
+    }
+  }
+}
+
+.link {
+  padding: 10px 0;
+  border-bottom: 1px dashed $gray-lighter;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  h4 {
+    margin: 0;
+  }
+
+  .stats a {
+    color: $text-color;
+
+    &:hover {
+      color: $brand-success;
+    }
+  }
+}
+
+.link-score {
+  margin: 0 10px 0 0;
+  font-weight: bold;
+}

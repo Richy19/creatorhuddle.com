@@ -1,4 +1,8 @@
 CreatorhuddleCom::Application.routes.draw do
+  resources :ratings
+
+  resources :links
+
   resources :articles
 
   resources :comments

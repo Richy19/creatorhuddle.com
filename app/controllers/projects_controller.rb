@@ -13,9 +13,9 @@ class ProjectsController < ApplicationController
   def get_resource_collection
     if params[:show] == 'followed'
       authenticate_user!
-      current_user.followed_projects.order(updated_at: :desc)
+      current_user.followed_projects.order(updated_at: :desc).paginate(per_page: 10, page: params[:page])
     else
-      Project.order(updated_at: :desc)
+      Project.order(updated_at: :desc).paginate(per_page: 10, page: params[:page])
     end
   end
 
@@ -24,13 +24,13 @@ class ProjectsController < ApplicationController
       # this might be expensive when there are lots of updates
       # so let's make sure they have notifications
       if current_user.notifications.unread.any?
-        current_user.notifications.where(target_id: @project.id).find_each do |notification|
+        current_user.notifications.where(target_id: @project.id, target_type: @project.class.to_s).find_each do |notification|
           notification.read = true
           notification.save
         end
 
         @project.comments.find_each do |comment|
-          current_user.notifications.where(target_id: comment.id).find_each do |notification|
+          current_user.notifications.where(target_id: comment.id, target_type: comment.class.to_s).find_each do |notification|
             notification.read = true
             notification.save
           end

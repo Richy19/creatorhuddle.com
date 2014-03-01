@@ -1,0 +1,9 @@
+<% if links.any? %>
+  <div class="links">
+    <% links.each do |link| %>
+      <%= render 'show', link: link %>
+    <% end %>
+  </div>
+<% else %>
+  <em>No links found</em>
+<% end %>

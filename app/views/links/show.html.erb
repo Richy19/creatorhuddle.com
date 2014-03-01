@@ -1,0 +1,31 @@
+<header class="masthead">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Link: <%= link.name %></h1>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <%= render 'show', link: link, show_comments: false %>
+
+      <div class="row">
+        <div class="col-md-12">
+          <%= render 'comments/bar', commentable: link %>
+
+          <div class="link-comments">
+            <%= render 'comments/list', commentable: link %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <h3>Submitted by:</h3>
+      <ul class="users link-users">
+        <li class="user link-user"><%= render 'users/avatar', user: link.user %> <%= link_to link.user.name, user_path(link.user) %></li>
+      </ul>
+    </div>
+  </div>
+</div>

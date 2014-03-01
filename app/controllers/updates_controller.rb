@@ -20,7 +20,7 @@ class UpdatesController < ApplicationController
       # so let's make sure they have notifications
       if current_user.notifications.unread.any?
         @updates.find_each do |update|
-          current_user.notifications.where(target_id: update.id).find_each do |notification|
+          current_user.notifications.where(target_id: update.id, target_type: update.class.to_s).find_each do |notification|
             notification.read = true
             notification.save
           end
@@ -34,13 +34,13 @@ class UpdatesController < ApplicationController
       # this might be expensive when there are lots of updates
       # so let's make sure they have notifications
       if current_user.notifications.unread.any?
-        current_user.notifications.where(target_id: @update.id).find_each do |notification|
+        current_user.notifications.where(target_id: @update.id, target_type: @update.class.to_s).find_each do |notification|
           notification.read = true
           notification.save
         end
 
         @update.comments.find_each do |comment|
-          current_user.notifications.where(target_id: comment.id).find_each do |notification|
+          current_user.notifications.where(target_id: comment.id, target_type: comment.class.to_s).find_each do |notification|
             notification.read = true
             notification.save
           end

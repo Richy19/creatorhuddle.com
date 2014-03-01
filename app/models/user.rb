@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :articles
   has_many :updates
+  has_many :links
+  has_many :ratings
   has_many :follows
 
   has_many :followed_projects, through: :follows, source: :followable, source_type: 'Project'
@@ -18,6 +20,10 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true, length: 2..32
   validates_format_of :username, with: /\A[-a-z0-9_]+\Z/i, message: 'may only contain letters, numbers, "-" and "_"'
+
+  def has_rated?(object)
+    ratings.where(ratable_id: object.id, ratable_type: object.class.to_s).any?
+  end
 
   def can_manage?(object)
     case object
