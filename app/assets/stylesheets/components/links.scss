@@ -29,8 +29,7 @@
     width: 50px;
     margin: -4px 10px -10px 0;
     float: left;
-    background: $brand-primary;
-    color: #fff;
+    background: $gray-lighter;
     @include border-radius(4px);
     padding: 4px 5px 5px;
   }
