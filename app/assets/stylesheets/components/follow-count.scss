@@ -1,9 +1,12 @@
 .follow-count {
   margin: 0 5px;
-  color: $gray-darker;
+  color: #a19f9b;
   background: #fff;
   display: inline-block;
-  padding: 6px 10px;
+  padding: 7px 10px 4px;
   position: relative;
   top: 2px;
+  font-size: 12px;
+
+  @include border-radius(4px);
 }

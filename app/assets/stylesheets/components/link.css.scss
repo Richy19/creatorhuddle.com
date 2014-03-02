@@ -1,7 +1,7 @@
 a {
   color: $brand-info;
 
-  @include transition-property(color);
+  @include transition-property(color, background-color);
   @include transition-duration(0.3s);
 
   &:hover {
