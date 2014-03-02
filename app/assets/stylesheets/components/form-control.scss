@@ -7,7 +7,7 @@
   color: $text-color;
 
   &:focus {
-    border-color: $gray-darker;
+    border-color: $gray-darkest;
     @include box-shadow(none);
   }
 }
@@ -22,7 +22,7 @@
     color: $text-color;
 
     &:focus {
-      border-color: $gray-darker;
+      border-color: $gray-darkest;
       @include box-shadow(none);
     }
   }

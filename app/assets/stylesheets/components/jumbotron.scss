@@ -1,7 +1,9 @@
 .jumbotron {
-  background: $gray-lighter; //$brand-secondary;
+  background: image-url('mountains.jpg'); //$brand-secondary;
+  background-position: center 63%;
+  background-size: cover;
   color: $brand-primary;
-  padding: 20px 0 10px;
+  padding: 40px 0;
   margin: 0;
 
   h1 {
@@ -23,12 +25,12 @@
   }
 
   .nav-tabs {
-    position: relative;
-    bottom: -9px;
+    position: absolute;
     border: 0;
 
     .active > a {
       border: 0;
+      background: #fff;
 
       &:hover {
         border: 0;
@@ -37,10 +39,12 @@
 
     li > a {
       border: 0;
-      color: $gray-darker;
+      color: $gray-darkest;
+      background: $gray-light;
 
       &:hover {
         border: 0;
+        background: $gray-lighter;
       }
     }
   }
