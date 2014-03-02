@@ -1,6 +1,4 @@
 .rate-link {
-  margin: 0 10px 0 0;
-
   button {
     margin: 0;
     padding: 0;
@@ -24,6 +22,18 @@
 .link {
   padding: 10px 0;
   border-bottom: 1px dashed $gray-lighter;
+  @extend .clearfix;
+
+  .rating-piece {
+    text-align: center;
+    width: 50px;
+    margin: -4px 10px -10px 0;
+    float: left;
+    background: $brand-primary;
+    color: #fff;
+    @include border-radius(4px);
+    padding: 4px 5px 5px;
+  }
 
   &:last-child {
     border-bottom: 0;
@@ -31,6 +41,7 @@
 
   h4 {
     margin: 0;
+    font-size: 16px;
   }
 
   .stats a {
@@ -43,6 +54,9 @@
 }
 
 .link-score {
-  margin: 0 10px 0 0;
   font-weight: bold;
+}
+
+.link-data {
+  padding: 4px 0 0 60px;
 }

@@ -2,21 +2,23 @@
   show_comments = true if show_comments.nil?
 %>
 
-<div class="link clearfix">
-  <div class="rate-link pull-left">
-    <%= form_for link.ratings.build do |f| %>
-      <%= f.hidden_field :ratable_id %>
-      <%= f.hidden_field :ratable_type %>
+<div class="link">
+  <div class="rating-piece">
+    <div class="rate-link">
+      <%= form_for link.ratings.build do |f| %>
+        <%= f.hidden_field :ratable_id %>
+        <%= f.hidden_field :ratable_type %>
 
-      <%= f.button disabled: !user_signed_in? || current_user.has_rated?(link.object) do %>
-        <i class="fa fa-arrow-up"></i>
+        <%= f.button disabled: !user_signed_in? || current_user.has_rated?(link.object) do %>
+          <i class="fa fa-arrow-up"></i>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <div class="link-score">
+      <%= link.score %>
+    </div>
   </div>
-  <div class="link-score pull-left">
-    <%= link.score %>
-  </div>
-  <div class="link-data pull-left">
+  <div class="link-data">
     <h4><%= link_to link.name, link.url, rel: 'nofollow', target: '_blank' %></h4>
 
     <% if show_comments %>
