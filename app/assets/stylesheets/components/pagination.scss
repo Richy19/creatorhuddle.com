@@ -1,0 +1,41 @@
+.pagination {
+  @include border-radius(4px);
+  margin: 0 auto 20px;
+  display: inline-block;
+  float: right;
+
+  .disabled > span {
+    background: $gray-lighter;
+    color: $gray;
+
+    &:hover {
+      background: $gray-lighter;
+      color: $gray;
+    }
+  }
+
+  .active > span {
+    color: #fff;
+    background: $gray-darker;
+
+    &:hover {
+      color: #fff;
+      background: $gray-darker;
+    }
+  }
+
+  & > li > a, & > li > span {
+    border: 0;
+    margin-left: 0;
+    background: $gray-lighter;
+  }
+
+  & > li > a {
+    color: $gray-darker;
+  }
+
+  & > li > a:hover {
+    color: $brand-primary;
+    background: $gray-light;
+  }
+}
