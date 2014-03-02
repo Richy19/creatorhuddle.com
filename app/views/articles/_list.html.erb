@@ -5,7 +5,7 @@
         <%= link_to article_path(article) do %>
           <h3><%= article.name %></h3>
         <% end %>
-        <p><%= truncate article.content, length: 150 %></p>
+        <p><%= truncate article.content_stripped, length: 150 %></p>
       </li>
     <% end %>
   </ul>

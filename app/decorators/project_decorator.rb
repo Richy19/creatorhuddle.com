@@ -9,4 +9,8 @@ class ProjectDecorator < Draper::Decorator
   def details
     ContentRenderer.new(object.details).render
   end
+
+  def details_stripped
+    ContentRenderer.new(object.details, strip: true).render
+  end
 end

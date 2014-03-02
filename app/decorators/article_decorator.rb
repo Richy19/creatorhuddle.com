@@ -7,4 +7,8 @@ class ArticleDecorator < Draper::Decorator
   def content
     ContentRenderer.new(object.content).render
   end
+
+  def content_stripped
+    ContentRenderer.new(object.content, strip: true).render
+  end
 end
