@@ -2,13 +2,11 @@
   <ul class="projects">
     <% projects.each do |project| %>
       <li class="project">
-        <%= link_to project_path(project) do %>
-          <h3><%= project.name %></h3>
-        <% end %>
+        <h3><%= link_to project.name, project_path(project) %></h3>
         <p><%= project.summary %></p>
-        <p class="stats">
-          <span class="label label-info"><i class="fa fa-rss"></i> <%= project.followers.count %> followers</span>
-        </p>
+        <small class="stats">
+          <i class="fa fa-rss"></i> <%= project.followers.count %> followers - by <%= project.users.decorate.map(&:name).join(', ').html_safe %>
+        </small>
       </li>
     <% end %>
   </ul>
