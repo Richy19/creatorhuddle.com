@@ -2,10 +2,13 @@
   <ul class="articles">
     <% articles.each do |article| %>
       <li class="article">
-        <%= link_to article_path(article) do %>
-          <h3><%= article.name %></h3>
-        <% end %>
+        <h3><%= link_to article.name, article_path(article) %></h3>
         <p><%= truncate article.content_stripped, length: 150 %></p>
+        <small class="stats">
+          <%= link_to article_path(article) do %>
+            <i class="fa fa-comments"></i> <%= article.comments.count %> comments
+          <% end %> - by <%= article.user.name %>
+        </small>
       </li>
     <% end %>
   </ul>

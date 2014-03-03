@@ -18,6 +18,14 @@
         margin-bottom: 0;
       }
     }
+
+    .stats a {
+      color: $gray-darker;
+
+      &:hover {
+        color: $brand-success;
+      }
+    }
   }
 
   &.small {
