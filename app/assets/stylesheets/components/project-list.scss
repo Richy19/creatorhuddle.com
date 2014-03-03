@@ -19,11 +19,15 @@
       }
     }
 
-    .stats a {
+    .stats {
       color: $gray-darker;
 
-      &:hover {
-        color: $brand-success;
+      a {
+        color: $gray-darker;
+
+        &:hover {
+          color: $brand-success;
+        }
       }
     }
   }
